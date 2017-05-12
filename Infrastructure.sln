@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.Cqrs", "In.Cqrs\In.Cqrs.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.Domain", "In.Domain\In.Domain.csproj", "{D5217D56-FBE4-4F61-8032-CA553EB6EFEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.Entity", "In.Entityframework\In.Entity.csproj", "{6464E77B-E6CF-49B9-B9DB-6F4C83DDD8F8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.Entity", "In.Entity\In.Entity.csproj", "{6464E77B-E6CF-49B9-B9DB-6F4C83DDD8F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.Mapping", "In.Mapping\In.Mapping.csproj", "{4D7EF010-7D85-4250-85B2-881E77BF5CBE}"
 EndProject
