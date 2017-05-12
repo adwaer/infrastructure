@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data.Entity;
-using System.Threading.Tasks;
-using In.Cqrs.Events;
+﻿using System.Threading.Tasks;
 using In.Cqrs.Uow;
 using In.Domain;
 
@@ -10,10 +7,10 @@ namespace In.Cqrs.Command
     public class SaveCommandHandler<TEntity> : IMsgHandler<TEntity>
         where TEntity : class, IEntity, IMessage
     {
-        private readonly DbContext _ctx;
+        private readonly IDataSetUow _ctx;
         //private readonly ISubscriber<TEntity>[] _subscribers;
 
-        public SaveCommandHandler(DbContext ctx/*, ISubscriber<TEntity>[] subscribers*/)
+        public SaveCommandHandler(IDataSetUow ctx/*, ISubscriber<TEntity>[] subscribers*/)
         {
             _ctx = ctx;
             //_subscribers = subscribers;
@@ -40,40 +37,40 @@ namespace In.Cqrs.Command
 
         public string Handle(TEntity message)
         {
-            FixState(message);
+            //FixState(message);
             
             //BeforeSave(message);
-            _ctx.SaveChanges();
+            _ctx.Commit();
             //AfterSave(message);
 
             return string.Empty;
         }
 
-        private void FixState(TEntity message)
-        {
-            var type = message.GetType();
-            var ipProp = type.GetProperty("Id");
-            if (!ipProp.PropertyType.IsValueType)
-            {
-                throw new NotImplementedException();
-            }
+        //private void FixState(TEntity message)
+        //{
+        //    var type = message.GetType();
+        //    var ipProp = type.GetProperty("Id");
+        //    if (!ipProp.PropertyType.IsValueType)
+        //    {
+        //        throw new NotImplementedException();
+        //    }
 
-            if (ipProp.GetValue(message).Equals(Activator.CreateInstance(ipProp.PropertyType)))
-            {
-                _ctx.Entry(message).State = EntityState.Added;
-            }
-            else
-            {
-                _ctx.Entry(message).State = EntityState.Modified;
-            }
-        }
+        //    //if (ipProp.GetValue(message).Equals(Activator.CreateInstance(ipProp.PropertyType)))
+        //    //{
+        //    //    _ctx.Entry(message).State = EntityState.Added;
+        //    //}
+        //    //else
+        //    //{
+        //    //    _ctx.Entry(message).State = EntityState.Modified;
+        //    //}
+        //}
 
         public async Task<string> HandleAsync(TEntity message)
         {
-            FixState(message);
+            //FixState(message);
 
             //BeforeSave(message);
-            await _ctx.SaveChangesAsync();
+            await _ctx.CommitAsync();
             //AfterSave(message);
 
             return string.Empty;

@@ -1,4 +1,4 @@
-﻿namespace In.Domain
+﻿namespace In.Di
 {
     public interface IDiScope
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace In.Entityframework
+namespace In.Entity
 {
     public abstract class TrackableEntity<TKey>: EntityBase<TKey>
     {

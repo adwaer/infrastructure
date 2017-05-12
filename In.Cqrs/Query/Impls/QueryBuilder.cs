@@ -1,4 +1,4 @@
-﻿using In.Domain;
+﻿using In.Di;
 
 namespace In.Cqrs.Query.Impls
 {

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using In.Domain;
 
-namespace In.Entityframework
+namespace In.Entity
 {
     public abstract class EntityBase<TId> : IEntity<TId>
     {

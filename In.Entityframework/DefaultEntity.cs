@@ -1,4 +1,4 @@
-﻿namespace In.Entityframework
+﻿namespace In.Entity
 {
     public class DefaultEntity :  EntityBase<int>
     {

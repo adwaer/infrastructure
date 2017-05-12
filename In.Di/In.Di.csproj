@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D5217D56-FBE4-4F61-8032-CA553EB6EFEB}</ProjectGuid>
+    <ProjectGuid>{5497463F-9A30-4557-84EC-F8D5A9806293}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>In.Domain</RootNamespace>
-    <AssemblyName>In.Domain</AssemblyName>
+    <RootNamespace>In.Di</RootNamespace>
+    <AssemblyName>In.Di</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,9 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILog.cs" />
-    <Compile Include="IEntity.cs" />
-    <Compile Include="ITimeTrackable.cs" />
+    <Compile Include="IDiScope.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
