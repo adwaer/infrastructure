@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
-using In.Cqrs.Query;
 
-namespace In.Cqrs.Condition.Abstract
+namespace In.Cqrs.Query.Criterion.Abstract
 {
     public interface IExpressionCriterion<T> : IGenericCriterion<T>
     {

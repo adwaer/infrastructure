@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Linq.Expressions;
-using In.Cqrs.Condition.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
 
-namespace In.Cqrs.Condition
+namespace In.Cqrs.Query.Criterion
 {
-    public class CustomCondition<T> : IExpressionCriterion<T> where T : class
+    public class CustomExpressionCriterion<T> : IExpressionCriterion<T> where T : class
     {
         private readonly Expression<Func<T, bool>> _expression;
 
-        public CustomCondition(Expression<Func<T, bool>> expression)
+        public CustomExpressionCriterion(Expression<Func<T, bool>> expression)
         {
             _expression = expression;
         }

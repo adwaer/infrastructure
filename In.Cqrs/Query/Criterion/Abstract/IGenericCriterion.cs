@@ -1,4 +1,4 @@
-﻿namespace In.Cqrs.Query
+﻿namespace In.Cqrs.Query.Criterion.Abstract
 {
     /// <summary>
     ///     Критерии запроса

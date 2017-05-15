@@ -1,42 +1,20 @@
 ﻿using System;
 using System.Threading.Tasks;
-using In.Cqrs.Events;
-using In.Cqrs.Uow;
 using In.Domain;
+using In.Entity.Uow;
 
 namespace In.Cqrs.Command
 {
-    public class DeleteCommandHandler<TEntity> : IMsgHandler<TEntity>
-        where TEntity : class, IEntity, IMessage
+    public class DeleteCommandHandler<TEntity>
+        where TEntity : class, IEntity
     {
         private readonly IDataSetUow _dataSetUow;
-        //private readonly ISubscriber<TEntity>[] _subscribers;
-
-        public DeleteCommandHandler(IDataSetUow dataSetUow/*, ISubscriber<TEntity>[] subscribers*/)
+        
+        public DeleteCommandHandler(IDataSetUow dataSetUow)
         {
             _dataSetUow = dataSetUow;
-            //_subscribers = subscribers;
         }
-
-
-        //private void BeforeDelete(TEntity id)
-        //{
-        //    if (_subscribers == null || _subscribers.Length == 0) { return; }
-
-        //    foreach (var subscriber in _subscribers)
-        //    {
-        //        subscriber.BeforeDelete(id);
-        //    }
-        //}
-        //private void AfterDelete(TEntity id)
-        //{
-        //    if (_subscribers == null || _subscribers.Length == 0) { return; }
-
-        //    foreach (var subscriber in _subscribers)
-        //    {
-        //        subscriber.AfterDelete(id);
-        //    }
-        //}
+        
 
         public string Handle(TEntity message)
         {
@@ -47,11 +25,8 @@ namespace In.Cqrs.Command
             }
 
             _dataSetUow.Remove(entity);
-
-            //BeforeDelete(message);
             _dataSetUow.Commit();
-            //AfterDelete(message);
-
+            
             return string.Empty;
         }
 
@@ -63,12 +38,9 @@ namespace In.Cqrs.Command
                 throw new ArgumentException($"Entity {typeof(TEntity).Name} with id={message} doesn't exists");
             }
 
-            _dataSetUow.Remove(entity);
-
-            //BeforeDelete(message);
+            _dataSetUow.Remove(entity);            
             await _dataSetUow.CommitAsync();
-            //AfterDelete(message);
-
+            
             return string.Empty;
         }
     }

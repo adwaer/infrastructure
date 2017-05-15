@@ -1,4 +1,7 @@
-﻿namespace In.Cqrs.Query
+﻿using In.Cqrs.Query.Criterion.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
+
+namespace In.Cqrs.Query
 {
     /// <summary>
     ///     Фабрика объектов запросов

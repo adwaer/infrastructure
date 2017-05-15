@@ -1,9 +1,9 @@
 ﻿using System.Runtime.Serialization;
-using In.Cqrs.Condition.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
 
-namespace In.Cqrs.Condition
+namespace In.Cqrs.Query.Criterion
 {
-    public class PagingContition : IPagingContition
+    public class PagingCriterion : IPagingCriterion
     {
         [DataMember(Name = "page")]
         public int Page { get; set; }

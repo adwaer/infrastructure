@@ -6,7 +6,6 @@
     /// <typeparam name="TCriterion"> </typeparam>
     /// <typeparam name="TResult"> </typeparam>
     public interface IQuery<in TCriterion, out TResult>
-        where TCriterion : ICriterion
     {
         /// <summary>
         ///     Получить результат из базы

@@ -17,9 +17,10 @@ namespace In.Identity
             };
         }
         
-        public static IdentityUserManager<TEntity> Get<TEntity, TRole>(DbContext dncontext, IOnCreateUserAction<TEntity> onCreateAction, IGetRolesAction<TEntity> onGetRolesAction) where TEntity : IdentityUser<Guid, IdentityUserLogin<Guid>, TRole, IdentityUserClaim<Guid>> where TRole : IdentityUserRole<Guid>, new()
+        public static IdentityUserManager<TEntity> Get<TEntity, TRole>(DbContext dbcontext, IOnCreateUserAction<TEntity> onCreateAction, IGetRolesAction<TEntity> onGetRolesAction) where TEntity : IdentityUser<Guid, IdentityUserLogin<Guid>, TRole, IdentityUserClaim<Guid>> where TRole : IdentityUserRole<Guid>, new()
         {
-            return new IdentityUserManager<TEntity>(new IdentityUserStore<TEntity, TRole>(dncontext, onCreateAction, onGetRolesAction));
+            return new IdentityUserManager<TEntity>(new IdentityUserStore<TEntity, TRole>(dbcontext, onCreateAction, onGetRolesAction));
         }
+        
     }
 }

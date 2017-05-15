@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Linq.Expressions;
-using In.Cqrs.Condition.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
 using In.Domain;
 
-namespace In.Cqrs.Condition
+namespace In.Cqrs.Query.Criterion
 {
-    public class ByIdCondition<T, TId> : IExpressionCriterion<T> where T : IEntity<TId>
+    public class ByIdExpressionCriterion<T, TId> : IExpressionCriterion<T> where T : class, IEntity<TId>
     {
         private readonly TId _id;
 
-        public ByIdCondition(TId id)
+        public ByIdExpressionCriterion(TId id)
         {
             _id = id;
         }

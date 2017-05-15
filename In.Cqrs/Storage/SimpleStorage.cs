@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using In.Cqrs.Command;
-using In.Cqrs.Condition.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
 using In.Cqrs.Query;
-using In.Cqrs.Uow;
 using In.Di;
 using In.Domain;
+using In.Entity.Uow;
 
 namespace In.Cqrs.Storage
 {
-    public class SimpleStorage<TEntity> : IStorage<TEntity> where TEntity : class, IEntity, IMessage
+    public class SimpleStorage<TEntity> : IStorage<TEntity> where TEntity : class, IEntity
     {
         private readonly IDiScope _diScope;
 
-        public SimpleStorage(IDiScope diScope/*<SimpleQuery> simpleQuery, SaveCommandHandler<TEntity, TKey> saveCommand, DeleteCommandHandler<TEntity, TKey> deleteCommand, IDataSetUow dataSetUow*/)
+        public SimpleStorage(IDiScope diScope/*<ExpressionQuery> simpleQuery, SaveCommandHandler<TEntity, TKey> saveCommand, DeleteCommandHandler<TEntity, TKey> deleteCommand, IDataSetUow dataSetUow*/)
         {
             _diScope = diScope;
         }

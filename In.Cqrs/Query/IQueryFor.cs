@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using In.Cqrs.Query.Criterion.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
 
 namespace In.Cqrs.Query
 {

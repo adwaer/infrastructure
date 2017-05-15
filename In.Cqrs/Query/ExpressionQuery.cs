@@ -1,6 +1,6 @@
 ﻿using System.Linq;
-using In.Cqrs.Condition.Abstract;
-using In.Cqrs.Uow;
+using In.Cqrs.Query.Criterion.Abstract;
+using In.Entity.Uow;
 
 namespace In.Cqrs.Query
 {

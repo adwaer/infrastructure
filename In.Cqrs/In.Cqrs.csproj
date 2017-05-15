@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -42,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Command\BaseCommandHandler.cs" />
     <Compile Include="Command\DeleteCommandHandler.cs" />
     <Compile Include="Command\SaveCommandHandler.cs" />
-    <Compile Include="Condition\Abstract\IExpressionCriterion.cs" />
-    <Compile Include="Condition\Abstract\IPagingContition.cs" />
-    <Compile Include="Condition\CustomCondition.cs" />
-    <Compile Include="Condition\ByIdCondition.cs" />
-    <Compile Include="Condition\PagingContition.cs" />
+    <Compile Include="IMessageResult.cs" />
+    <Compile Include="Query\Criterion\Abstract\IExpressionCriterion.cs" />
+    <Compile Include="Query\Criterion\Abstract\IPagingCriterion.cs" />
+    <Compile Include="Query\Criterion\CustomExpressionCriterion.cs" />
+    <Compile Include="Query\Criterion\ByIdExpressionCriterion.cs" />
+    <Compile Include="Query\Criterion\EmptyExpressionCriterion.cs" />
+    <Compile Include="Query\Criterion\PagingCriterion.cs" />
+    <Compile Include="Query\Criterion\GenericCriterion.cs" />
+    <Compile Include="Query\Criterion\EmptyCriterion.cs" />
     <Compile Include="Enums\DbAction.cs" />
     <Compile Include="Enums\CommandState.cs" />
     <Compile Include="Events\EventDescriptor.cs" />
@@ -66,8 +73,8 @@
     <Compile Include="IMessage.cs" />
     <Compile Include="IStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Query\IGenericCriterion.cs" />
-    <Compile Include="Query\ICriterion.cs" />
+    <Compile Include="Query\Criterion\Abstract\IGenericCriterion.cs" />
+    <Compile Include="Query\Criterion\Abstract\ICriterion.cs" />
     <Compile Include="Query\IEntityComponent.cs" />
     <Compile Include="Query\ILinqProvider.cs" />
     <Compile Include="Query\Impls\QueryBuilder.cs" />
@@ -81,8 +88,6 @@
     <Compile Include="SimpleEventStore.cs" />
     <Compile Include="SimpleMsgBus.cs" />
     <Compile Include="Storage\SimpleStorage.cs" />
-    <Compile Include="Uow\IAsyncCrudUow.cs" />
-    <Compile Include="Uow\IDataSetUow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -97,7 +102,12 @@
       <Project>{d5217d56-fbe4-4f61-8032-ca553eb6efeb}</Project>
       <Name>In.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\In.Entity\In.Entity.csproj">
+      <Project>{6464E77B-E6CF-49B9-B9DB-6F4C83DDD8F8}</Project>
+      <Name>In.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

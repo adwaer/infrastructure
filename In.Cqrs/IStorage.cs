@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using In.Cqrs.Condition.Abstract;
+using In.Cqrs.Query.Criterion.Abstract;
 
 namespace In.Cqrs
 {

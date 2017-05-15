@@ -1,4 +1,5 @@
-﻿using In.Di;
+﻿using In.Cqrs.Query.Criterion.Abstract;
+using In.Di;
 
 namespace In.Cqrs.Query.Impls
 {
