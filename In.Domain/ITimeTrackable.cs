@@ -6,6 +6,6 @@ namespace In.Domain
     {
         DateTime CreateDate { get; set; }
         DateTime UpdateDate { get; set; }
-        string ImpersonalId { get; set; }
+        string Identity { get; set; }
     }
 }
