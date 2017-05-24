@@ -3,6 +3,7 @@ using In.Cqrs.Query.Criterion.Abstract;
 
 namespace In.Cqrs.Query.Criterion
 {
+    [DataContract]
     public class PagingCriterion : IPagingCriterion
     {
         [DataMember(Name = "page")]
