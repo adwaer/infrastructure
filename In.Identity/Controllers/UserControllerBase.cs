@@ -65,9 +65,9 @@ namespace In.Identity.Controllers
             return BadRequest(result.ToString());
         }
 
-        protected virtual async Task RegistrationCompleted(Guid id)
+        protected virtual Task RegistrationCompleted(Guid id)
         {
-            
+            return Task.FromResult<object>(null);
         }
         
         public virtual async Task<IHttpActionResult> Confirm(Guid userId, ConfirmByTokenViewModel model)

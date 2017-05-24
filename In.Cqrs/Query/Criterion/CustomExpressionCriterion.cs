@@ -4,7 +4,7 @@ using In.Cqrs.Query.Criterion.Abstract;
 
 namespace In.Cqrs.Query.Criterion
 {
-    public class CustomExpressionCriterion<T> : IExpressionCriterion<T> where T : class
+    public class CustomExpressionCriterion<T> : IExpressionCriterion<T>
     {
         private readonly Expression<Func<T, bool>> _expression;
 

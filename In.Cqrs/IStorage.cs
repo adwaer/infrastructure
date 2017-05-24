@@ -3,7 +3,7 @@ using In.Cqrs.Query.Criterion.Abstract;
 
 namespace In.Cqrs
 {
-    public interface IStorage<T> where T : class
+    public interface IStorage<T>
     {
         IEnumerable<T> GetAll();
         IEnumerable<T> Get(IExpressionCriterion<T> condition);
