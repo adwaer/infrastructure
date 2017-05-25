@@ -65,7 +65,7 @@ namespace In.Identity
             throw new NotImplementedException();
             //user.IsDeleted = true;
 
-            return UpdateAsync(user);
+            //return UpdateAsync(user);
         }
 
         /// <summary>

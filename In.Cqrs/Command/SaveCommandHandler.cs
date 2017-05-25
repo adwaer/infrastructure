@@ -17,9 +17,7 @@ namespace In.Cqrs.Command
         public string Handle(TEntity message)
         {
             _ctx.FixupState(message);
-            _ctx.Commit();
-
-            return string.Empty;
+            return _ctx.Commit().ToString();
         }
         
     }

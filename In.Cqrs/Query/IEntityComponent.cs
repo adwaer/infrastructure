@@ -1,4 +1,4 @@
-﻿namespace ByndyuSoft.Infrastructure.Domain
+﻿namespace In.Cqrs.Query
 {
     /// <summary>
     /// </summary>

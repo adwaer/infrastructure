@@ -1,6 +1,4 @@
-﻿using ByndyuSoft.Infrastructure.Domain;
-
-namespace In.Cqrs.Query
+﻿namespace In.Cqrs.Query
 {
     /// <summary>
     ///     Интерфейс для построителя запросов
