@@ -24,18 +24,18 @@ namespace In.Cqrs.Query.Impls
         public TResult With<TCriterion>(TCriterion criterion)
             where TCriterion : ICriterion
         {
-            return _factory
-                .Create<TCriterion, TResult>()
-                .Ask(criterion);
+            return WithAsync(criterion)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
         }
 
         public async Task<TResult> WithAsync<TCriterion>(TCriterion criterion)
             where TCriterion : ICriterion
         {
-            return await Task.Factory.StartNew(() => With(criterion),
-                CancellationToken.None,
-                TaskCreationOptions.None,
-                TaskScheduler.FromCurrentSynchronizationContext());
+            return await _factory
+                .Create<TCriterion, TResult>()
+                .Ask(criterion);
         }
     }
 }

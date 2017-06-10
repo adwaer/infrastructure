@@ -1,17 +1,19 @@
-﻿namespace In.Cqrs.Query
+﻿using System.Threading.Tasks;
+
+namespace In.Cqrs.Query
 {
     /// <summary>
     ///     Интерфейс для объектов запросов к базе
     /// </summary>
     /// <typeparam name="TCriterion"> </typeparam>
     /// <typeparam name="TResult"> </typeparam>
-    public interface IQuery<in TCriterion, out TResult>
+    public interface IQuery<in TCriterion, TResult>
     {
         /// <summary>
         ///     Получить результат из базы
         /// </summary>
         /// <param name="criterion"> </param>
         /// <returns> </returns>
-        TResult Ask(TCriterion criterion);
+        Task<TResult> Ask(TCriterion criterion);
     }
 }

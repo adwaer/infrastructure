@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Threading.Tasks;
 using In.Di;
 using Newtonsoft.Json.Linq;
@@ -19,12 +18,20 @@ namespace In.Cqrs
 
         public string Send<T>(T command) where T : IMessage
         {
+            return SendAsync(command)
+                .ConfigureAwait(false)
+                .GetAwaiter()
+                .GetResult();
+        }
+
+        public async Task<string> SendAsync<T>(T command) where T : IMessage
+        {
             var messageResult = GetLogModel(command);
 
             try
             {
                 var handler = _diScope.Resolve<IMsgHandler<T>>();
-                return handler.Handle(command);
+                return await handler.Handle(command);
             }
             catch (Exception e)
             {
@@ -36,14 +43,6 @@ namespace In.Cqrs
             {
                 SaveCommand(messageResult);
             }
-        }
-
-        public async Task<string> SendAsync<T>(T command) where T : IMessage
-        {
-            return await Task.Factory.StartNew(() => Send(command),
-                CancellationToken.None,
-                TaskCreationOptions.None,
-                TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         private void SaveCommand(IMessageResult msgResult)
