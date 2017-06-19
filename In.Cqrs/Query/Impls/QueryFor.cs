@@ -24,10 +24,7 @@ namespace In.Cqrs.Query.Impls
         public TResult With<TCriterion>(TCriterion criterion)
             where TCriterion : ICriterion
         {
-            return WithAsync(criterion)
-                .ConfigureAwait(false)
-                .GetAwaiter()
-                .GetResult();
+            return AsyncHelpers.RunSync(() => WithAsync(criterion));
         }
 
         public async Task<TResult> WithAsync<TCriterion>(TCriterion criterion)

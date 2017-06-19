@@ -18,10 +18,7 @@ namespace In.Cqrs
 
         public string Send<T>(T command) where T : IMessage
         {
-            return SendAsync(command)
-                .ConfigureAwait(false)
-                .GetAwaiter()
-                .GetResult();
+            return AsyncHelpers.RunSync(() => SendAsync(command));
         }
 
         public async Task<string> SendAsync<T>(T command) where T : IMessage

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncHelpers.cs" />
     <Compile Include="Command\DeleteCommandHandler.cs" />
     <Compile Include="Command\SaveCommandHandler.cs" />
     <Compile Include="IMessageResult.cs" />
