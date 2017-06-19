@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using In.Cqrs.Command;
 using In.Cqrs.Query.Criterion.Abstract;
 using In.Cqrs.Query;
@@ -30,10 +31,10 @@ namespace In.Cqrs.Storage
             dataSetUow.Add(data);
         }
 
-        public void Save(TEntity data)
+        public async Task Save(params TEntity[] messages)
         {
             var saveCommand = _diScope.Resolve<SaveCommandHandler<TEntity>>();
-            saveCommand.Handle(data);
+            await saveCommand.Handle(messages);
         }
 
         public void Remove(TEntity data)

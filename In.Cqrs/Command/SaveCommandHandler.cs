@@ -1,4 +1,5 @@
-﻿using In.Domain;
+﻿using System.Threading.Tasks;
+using In.Domain;
 using In.Entity.Uow;
 
 namespace In.Cqrs.Command
@@ -12,13 +13,17 @@ namespace In.Cqrs.Command
         {
             _ctx = ctx;
         }
-        
 
-        public string Handle(TEntity message)
+
+        public async Task<string> Handle(params TEntity[] messages)
         {
-            _ctx.FixupState(message);
-            return _ctx.Commit().ToString();
+            foreach (var msg in messages)
+            {
+                _ctx.FixupState(msg);
+            }
+
+            return (await _ctx.CommitAsync())
+                .ToString();
         }
-        
     }
 }
