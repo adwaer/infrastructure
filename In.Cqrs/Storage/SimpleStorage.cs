@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using In.Cqrs.Command;
 using In.Cqrs.Query.Criterion.Abstract;
