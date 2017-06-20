@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using In.Cqrs.Command;
 using In.Cqrs.Query.Criterion.Abstract;
@@ -18,11 +19,17 @@ namespace In.Cqrs.Storage
             _diScope = diScope;
         }
 
-        public IEnumerable<TEntity> Get(IExpressionCriterion<TEntity> condition)
+        public IQueryable<TEntity> Get(IExpressionCriterion<TEntity> condition)
         {
             var simpleQuery = _diScope.Resolve<ExpressionQuery>();
             return simpleQuery
                 .Ask(condition);
+        }
+        public IQueryable<TEntity> GetAll()
+        {
+            return _diScope
+                .Resolve<IDataSetUow>()
+                .Query<TEntity>();
         }
 
         public void Add(TEntity data)
@@ -43,11 +50,5 @@ namespace In.Cqrs.Storage
             deleteCommand.Handle(data);
         }
 
-        public IEnumerable<TEntity> GetAll()
-        {
-            return _diScope
-                .Resolve<IDataSetUow>()
-                .Query<TEntity>();
-        }
     }
 }
