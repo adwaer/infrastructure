@@ -13,6 +13,7 @@ namespace In.Entity.Uow
         void Include<T, TProp>(IQueryable<T> queryable, params Expression<Func<T, TProp>>[] paths) where T : class;
         object GetContext();
         TEntity Find<TEntity>(object id) where TEntity : class;
+        Task<TEntity> FindAsync<TEntity>(object id) where TEntity : class;
 
         /* CRUD */
         void Add<T>(T entity) where T : class;
