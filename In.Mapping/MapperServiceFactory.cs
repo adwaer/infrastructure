@@ -11,10 +11,10 @@ namespace In.Mapping
             _diContainer = diContainer;
         }
 
-        public TDest GetFrom<TDest, TDto>(TDto model)
+        public TDest GetFrom<TDest, TDto>(TDto model, object mappingData = null)
         {
             var mapperService = _diContainer.Resolve<IMapperService<TDest, TDto>>();
-            return mapperService.GetFrom(model);
+            return mapperService.GetFrom(model, mappingData);
         }
     }
 }

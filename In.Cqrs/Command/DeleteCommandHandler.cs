@@ -17,13 +17,13 @@ namespace In.Cqrs.Command
 
         public string Handle(TEntity message)
         {
-            var entity = _dataSetUow.Find<TEntity>(message);
-            if (entity == null)
-            {
-                throw new ArgumentException($"Entity {typeof(TEntity).Name} with id={message} doesn't exists");
-            }
+            //var entity = _dataSetUow.Find<TEntity>(message);
+            //if (entity == null)
+            //{
+            //    throw new ArgumentException($"Entity {typeof(TEntity).Name} with id={message.GetId()} doesn't exists");
+            //}
 
-            _dataSetUow.Remove(entity);
+            _dataSetUow.Remove(message);
             
             return string.Empty;
         }
