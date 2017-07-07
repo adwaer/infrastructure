@@ -80,6 +80,8 @@
     <Compile Include="Query\ILinqProvider.cs" />
     <Compile Include="Query\Impls\QueryBuilder.cs" />
     <Compile Include="Query\Impls\QueryFactory.cs" />
+    <Compile Include="Query\IMultipleQueryResult.cs" />
+    <Compile Include="Query\ISingleQueryResult.cs" />
     <Compile Include="Query\IQuery.cs" />
     <Compile Include="Query\IQueryBuilder.cs" />
     <Compile Include="Query\IQueryFactory.cs" />
