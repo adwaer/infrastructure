@@ -13,6 +13,7 @@ namespace In.Cqrs.Query
 
     public class MultipleQueryResult<T> : IMultipleQueryResult<T>
     {
+        public int Count { get; set; }
         public T[] Data { get; set; }
     }
 }
