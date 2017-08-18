@@ -45,8 +45,8 @@ namespace In.Cqrs.Storage
 
         public void Remove(TEntity data)
         {
-            var deleteCommand = _diScope.Resolve<DeleteCommandHandler<TEntity>>();
-            deleteCommand.Handle(data);
+            var msgSender = _diScope.Resolve<IMessageSender>();
+            msgSender.Send(new DeleteCommand(data));
         }
 
     }
