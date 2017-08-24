@@ -2,11 +2,11 @@
 
 namespace In.Cqrs.Command
 {
-    public class DeleteCommand : IMessage
+    public class DeleteCommand<T> : IMessage
     {
-        public IEntity Data { get; }
+        public T Data { get; }
 
-        public DeleteCommand(IEntity data)
+        public DeleteCommand(T data)
         {
             Data = data;
         }

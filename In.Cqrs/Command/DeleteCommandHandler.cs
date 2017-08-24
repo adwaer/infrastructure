@@ -4,7 +4,7 @@ using In.Entity.Uow;
 
 namespace In.Cqrs.Command
 {
-    public class DeleteCommandHandler : IMsgHandler<DeleteCommand>
+    public class DeleteCommandHandler<T> : IMsgHandler<DeleteCommand<T>> where T : class
     {
         private readonly IDataSetUow _dataSetUow;
 
@@ -13,9 +13,9 @@ namespace In.Cqrs.Command
             _dataSetUow = dataSetUow;
         }
 
-        public Task<string> Handle(DeleteCommand message)
+        public Task<string> Handle(DeleteCommand<T> message)
         {
-            _dataSetUow.Remove(message.Data);
+            _dataSetUow.Remove<T>(message.Data);
             return Task.FromResult(String.Empty);
         }
     }
