@@ -69,51 +69,6 @@ namespace In.Identity.Controllers
         {
             return Task.FromResult<object>(null);
         }
-        
-        public virtual async Task<IHttpActionResult> Confirm(Guid userId, ConfirmByTokenViewModel model)
-        {
-            if (await _userManager.FindByIdAsync(userId) == null)
-            {
-                return BadRequest("user_not_found");
-            }
-
-            bool isConfirmed;
-            try
-            {
-                isConfirmed = await _userManager.IsEmailConfirmedAsync(userId);
-            }
-            catch (InvalidOperationException)
-            {
-                return BadRequest("user_check_error");
-            }
-
-            if (isConfirmed)
-            {
-                return BadRequest("already_confirmed");
-            }
-
-            var result = await _userManager.ConfirmEmailAsync(userId, model.Token);
-            if (result == IdentityResult.Success)
-            {
-                return Ok();
-            }
-            return BadRequest("cannot_confirm");
-        }
-         
-        public virtual async Task<IHttpActionResult> Restore(Guid userId, RestorePasswordViewModel model)
-        {
-            if (await _userManager.FindByIdAsync(userId) == null)
-            {
-                return BadRequest("user_not_found");
-            }
-
-            if (await _userManager.ResetPasswordAsync(userId, model.Token, model.Pwd) != IdentityResult.Success)
-            {
-                return BadRequest("cannot_restore");
-            }
-
-            return Ok();
-        }
 
         private IHttpActionResult GetErrorResult(IdentityResult result)
         {
