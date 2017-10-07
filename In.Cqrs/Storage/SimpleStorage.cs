@@ -46,9 +46,10 @@ namespace In.Cqrs.Storage
         public void Remove(TEntity data)
         {
             var dataSetUow = _diScope.Resolve<IDataSetUow>();
+            dataSetUow.Remove(data);
 
-            var command = new DeleteCommand<TEntity>(data);
-            AsyncHelpers.RunSync(() => new DeleteCommandHandler<TEntity>(dataSetUow).Handle(command));
+            //var command = new DeleteCommand<TEntity>(data);
+            //AsyncHelpers.RunSync(() => new DeleteCommandHandler<TEntity>(dataSetUow).Handle(command));
 
             //var msgSender = _diScope.Resolve<IMessageSender>();
             //msgSender.Send(new DeleteCommand<TEntity>(data));
