@@ -2,6 +2,7 @@
 {
     public interface IMultipleQueryResult<T>
     {
+        int Count { get; set; }
         T[] Data { get; set; }
     }
 
