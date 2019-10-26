@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\In.Common\In.Common.csproj" />
+      <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj" />
+      <ProjectReference Include="..\In.Logging\In.Logging.csproj" />
+    </ItemGroup>
+
+</Project>

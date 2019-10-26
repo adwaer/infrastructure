@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="X.PagedList" Version="7.9.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\In.Common\In.Common.csproj" />
+      <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj" />
+    </ItemGroup>
+
+</Project>
