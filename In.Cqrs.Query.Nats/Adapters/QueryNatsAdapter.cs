@@ -22,5 +22,10 @@ namespace In.Cqrs.Query.Nats.Adapters
         public QueryNatsAdapter()
         {
         }
+
+        public string GetReply()
+        {
+            return QueryResult;
+        }
     }
 }

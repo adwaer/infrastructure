@@ -7,7 +7,7 @@ namespace In.DataAccess.Repository.Abstract
 {
     public interface IDataSetUow
     {
-        Task<T[]> Find<T>(Expression<Func<T, bool>> expression) where T : class;
+        Task<ICollection<T>> Find<T>(Expression<Func<T, bool>> expression) where T : class;
         Task<T> FindOne<T>(Expression<Func<T, bool>> expression) where T : class;
         Task<int> CommitAsync();
 

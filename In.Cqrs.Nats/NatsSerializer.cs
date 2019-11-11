@@ -14,12 +14,9 @@ namespace In.Cqrs.Nats
                 return null;
 
             var serializer = new DataContractJsonSerializer(typeof(T));
-
-            using (MemoryStream stream = new MemoryStream())
-            {
-                serializer.WriteObject(stream, message);
-                return stream.ToArray();
-            }
+            using MemoryStream stream = new MemoryStream();
+            serializer.WriteObject(stream, message);
+            return stream.ToArray();
         }
 
         private static readonly Type[] PrimitiveTypes =
@@ -42,18 +39,16 @@ namespace In.Cqrs.Nats
 
         public object Deserialize<T>(byte[] data)
         {
-            using (MemoryStream stream = new MemoryStream())
-            {
-                var serializer = new DataContractJsonSerializer(typeof(T));
-                stream.Write(data, 0, data.Length);
-                stream.Position = 0;
-                return serializer.ReadObject(stream);
-            }
+            using var stream = new MemoryStream();
+            var serializer = new DataContractJsonSerializer(typeof(T));
+            stream.Write(data, 0, data.Length);
+            stream.Position = 0;
+            return serializer.ReadObject(stream);
         }
 
         public T DeserializeMsg<T>(string command, Type cmdType = null)
         {
-            cmdType = cmdType ?? typeof(T);
+            cmdType ??= typeof(T);
             return (T) (IsPrimitive(cmdType) ? command : JsonConvert.DeserializeObject(command, cmdType));
         }
 

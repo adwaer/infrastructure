@@ -27,21 +27,20 @@ namespace In.Cqrs.Query.Nats.Adapters
             _queueFactory = queueFactory;
         }
 
-        public async  Task<TResult> Ask(TCriterion criterion)
+        public async Task<TResult> Ask(TCriterion criterion)
         {
             var connection = _connectionFactory.Get<QueryNatsAdapter>();
-            
+
             var replySubj = GetRandomString();
             QueryNatsAdapter response;
             try
             {
                 var queryQueue = _queueFactory.Get();
-                var data = new QueryNatsAdapter(criterion, typeof(TResult));
-                data.CriterionType += $"|{replySubj}";
-                
+                var data = new QueryNatsAdapter(criterion, typeof(TResult)) {QueryResult = replySubj};
+
                 connection.Publish(queryQueue, data);
                 connection.Flush();
-                
+
                 response = await GetResponse(connection, replySubj, out var subscription);
                 subscription.Dispose();
             }

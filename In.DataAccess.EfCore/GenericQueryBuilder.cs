@@ -11,7 +11,7 @@ using In.DataAccess.Repository.Abstract;
 using In.Specifications;
 using Microsoft.EntityFrameworkCore;
 
-namespace In.Cqrs.Query.EfCore
+namespace In.DataAccess.EfCore
 {
 	public class GenericQueryBuilder<TSource> : GenericQuery<TSource>, IGenericQueryBuilder<TSource>
 		where TSource : class, IHasKey

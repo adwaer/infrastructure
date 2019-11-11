@@ -4,7 +4,7 @@ using In.DataAccess.Entity.Abstract;
 using In.DataAccess.Repository.Abstract;
 using In.Specifications;
 
-namespace In.Cqrs.Query.EfCore.Implementations
+namespace In.DataAccess.Repository
 {
     public class DatasetCrudUow<TEntity> : IRepository<TEntity> where TEntity : class, IHasKey
     {

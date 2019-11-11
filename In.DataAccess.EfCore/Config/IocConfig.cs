@@ -1,15 +1,23 @@
 using System.Reflection;
 using In.Common;
-using In.Cqrs.Query.EfCore.Implementations;
+using In.DataAccess.EfCore.Implementations;
 using In.Cqrs.Query.Queries.Generic;
+using In.DataAccess.Repository;
 using In.DataAccess.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace In.Cqrs.Query.EfCore.Config
+namespace In.DataAccess.EfCore.Config
 {
     public static class IocConfig
     {
+        /// <summary>
+        /// Dont forget init db provider!!!
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="assemblies"></param>
+        /// <typeparam name="TCtx"></typeparam>
+        /// <returns></returns>
         public static IServiceCollection AddEfCore<TCtx>(this IServiceCollection services,
             Assembly[] assemblies) where TCtx: DbContext
         {

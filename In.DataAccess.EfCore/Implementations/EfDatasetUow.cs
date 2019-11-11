@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using In.DataAccess.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
 
-namespace In.Cqrs.Query.EfCore.Implementations
+namespace In.DataAccess.EfCore.Implementations
 {
     public class EfDatasetUow : IDataSetUow
     {
@@ -17,9 +17,9 @@ namespace In.Cqrs.Query.EfCore.Implementations
             _dbContext = dbContext;
         }
 
-        public Task<T[]> Find<T>(Expression<Func<T, bool>> expression) where T : class
+        public async Task<ICollection<T>> Find<T>(Expression<Func<T, bool>> expression) where T : class
         {
-            return _dbContext.Set<T>()
+            return await _dbContext.Set<T>()
                 .Where(expression)
                 .ToArrayAsync();
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using CSharpFunctionalExtensions;
@@ -11,7 +10,7 @@ using In.DataAccess.Repository.Abstract;
 using NATS.Client;
 using Newtonsoft.Json.Linq;
 
-namespace In.Cqrs.Command.Nats
+namespace In.Cqrs.Command.Nats.Implementations
 {
     public class NatsMessageBus : IMessageSender, IDisposable
     {
@@ -50,10 +49,8 @@ namespace In.Cqrs.Command.Nats
             try
             {
                 var commandQueue = _queueFactory.Get();
-                _replySubj = GetRandomString();
 
                 var data = new CommandNatsAdapter(command);
-                data.CommandType += $"|{_replySubj}";
                 _connection.Publish(commandQueue.Value, _replySubj, data);
                 _connection.Flush();
 
@@ -135,19 +132,6 @@ namespace In.Cqrs.Command.Nats
             return msgResult;
         }
 
-        private string GetRandomString(bool lowerCase = true, int size = 7)
-        {
-            var builder = new StringBuilder();
-            Random random = new Random();
-            char ch;
-            for (var i = 0; i < size; i++)
-            {
-                ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
-                builder.Append(ch);
-            }
-
-            return lowerCase ? builder.ToString().ToLower() : builder.ToString();
-        }
         
         #endregion
     }

@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <AssemblyName>In.DataAccess.EfCore</AssemblyName>
+        <RootNamespace>In.DataAccess.EfCore</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

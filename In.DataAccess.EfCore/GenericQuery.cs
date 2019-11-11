@@ -7,7 +7,7 @@ using In.Cqrs.Query.Queries.Generic;
 using Microsoft.EntityFrameworkCore;
 using X.PagedList;
 
-namespace In.Cqrs.Query.EfCore
+namespace In.DataAccess.EfCore
 {
     public class GenericQuery<TSource> : IGenericQuery<TSource>
     {

@@ -9,7 +9,7 @@ namespace In.DDD.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddDDD(this IServiceCollection services,
+        public static IServiceCollection AddDdd(this IServiceCollection services,
             Assembly[] assemblies)
         {
             return services.AddScoped<SimpleDomainEventRepository>(cf =>
@@ -20,8 +20,7 @@ namespace In.DDD.Config
                         return null;
                     })
                     .RegisterAssemblyImplementationsScoped(assemblies, typeof(IEventMsgHandle<>))
-                    .RegisterAssemblyImplementationsScoped(assemblies, typeof(IDomainEventRepository))
-                ;
+                    .RegisterAssemblyImplementationsScoped(assemblies, typeof(IDomainEventRepository));
         }
     }
 }

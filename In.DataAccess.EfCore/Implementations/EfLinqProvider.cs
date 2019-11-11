@@ -3,7 +3,7 @@ using In.DataAccess.Entity.Abstract;
 using In.DataAccess.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
 
-namespace In.Cqrs.Query.EfCore.Implementations
+namespace In.DataAccess.EfCore.Implementations
 {
     public class EfLinqProvider : ILinqProvider
     {

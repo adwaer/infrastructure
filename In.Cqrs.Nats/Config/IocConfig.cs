@@ -8,7 +8,7 @@ namespace In.Cqrs.Nats.Config
     {
         public static IServiceCollection AddNats(this IServiceCollection services, NatsSenderOptions natsSenderOptions)
         {
-            return services.AddScoped<INatsSerializer, NatsSerializer>()
+            return services.AddSingleton<INatsSerializer, NatsSerializer>()
                 .AddSingleton<INatsConnectionFactory>(cf =>
                 {
                     var serializer = (INatsSerializer) cf.GetService(typeof(INatsSerializer));

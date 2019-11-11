@@ -1,6 +1,4 @@
-using In.Cqrs.Query.Nats;
-
-namespace In.Cqrs.Nats
+namespace In.Cqrs.Query.Nats.Implementations
 {
     public class NatsReceiverQueryQueueFactory : INatsReceiverQueryQueueFactory
     {
