@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Logging;
 
-namespace In.Logs.Implementations
+namespace In.Logging.Implementations
 {
     /// <inheritdoc />
     public class LogService : ILogService

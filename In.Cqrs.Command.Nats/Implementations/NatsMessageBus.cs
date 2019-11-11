@@ -20,8 +20,7 @@ namespace In.Cqrs.Command.Nats.Implementations
         private readonly INatsReceiverCommandQueueFactory _queueFactory;
         private readonly IEncodedConnection _connection;
         private readonly IEncodedConnection _responseConnection;
-        private List<IAsyncSubscription> _subscriptions = new List<IAsyncSubscription>();
-        private string _replySubj;
+        private readonly List<IAsyncSubscription> _subscriptions = new List<IAsyncSubscription>();
 
         public NatsMessageBus(IDiScope diScope, INatsConnectionFactory connectionFactory,
             IRepository<IMessageResult> storage, INatsReceiverCommandQueueFactory queueFactory)
@@ -51,10 +50,10 @@ namespace In.Cqrs.Command.Nats.Implementations
                 var commandQueue = _queueFactory.Get();
 
                 var data = new CommandNatsAdapter(command);
-                _connection.Publish(commandQueue.Value, _replySubj, data);
+                _connection.Publish(commandQueue.Value, data.Reply, data);
                 _connection.Flush();
 
-                return await GetResponse();
+                return await GetResponse(data.Reply);
             }
             catch (Exception e)
             {
@@ -83,7 +82,7 @@ namespace In.Cqrs.Command.Nats.Implementations
         
         #region private
 
-        private Task<Result> GetResponse()
+        private Task<Result> GetResponse(string dataReply)
         {
             var promise = new TaskCompletionSource<Result>();
             var completed = 0;
@@ -104,7 +103,7 @@ namespace In.Cqrs.Command.Nats.Implementations
                 }
             });
 
-            var subscription = _responseConnection.SubscribeAsync(_replySubj, "responseQueue",
+            var subscription = _responseConnection.SubscribeAsync(dataReply, "responseQueue",
                 (sender, args) =>
                 {
                     var result = (ResultAdapter) args.ReceivedObject;

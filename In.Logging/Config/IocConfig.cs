@@ -1,7 +1,7 @@
-using In.Logs.Implementations;
+﻿using In.Logging.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace In.Logs.Config
+namespace In.Logging.Config
 {
     public static class IocConfig
     {

@@ -1,6 +1,6 @@
-﻿using System;
+﻿﻿using System;
 
-namespace In.Logs
+ namespace In.Logging
 {
     /// <summary>
     /// Logger service
