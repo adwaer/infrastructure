@@ -5,13 +5,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="CSharpFunctionalExtensions" Version="2.1.1" />
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\In.Common\In.Common.csproj" />
       <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj" />
+      <ProjectReference Include="..\In.FunctionalCSharp\In.FunctionalCSharp.csproj" />
     </ItemGroup>
 
 </Project>
