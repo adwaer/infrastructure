@@ -14,9 +14,9 @@ namespace In.DataAccess.Mongo
         private readonly IMongoDatabase _database;
         private readonly IClientSessionHandle _session;
 
-        public MongoDatasetUow(IMongoDatabase database)
+        public MongoDatasetUow(IMongoCtx ctx)
         {
-            _database = database;
+            _database = ctx.Db;
             _session = _database.Client.StartSession();
         }
 

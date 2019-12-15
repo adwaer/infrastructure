@@ -11,13 +11,13 @@ namespace In.Cqrs.Command.Nats.Implementations
     {
         private readonly ITypeFactory _typeFactory;
         private readonly INatsSerializer _serializer;
-        private readonly IMessageSender _messageSender;
+        private readonly IDiScope _diScope;
 
-        public NatsCommandReplyFactory(ITypeFactory typeFactory, INatsSerializer serializer, IMessageSender messageSender)
+        public NatsCommandReplyFactory(ITypeFactory typeFactory, INatsSerializer serializer, IDiScope diScope)
         {
             _typeFactory = typeFactory;
             _serializer = serializer;
-            _messageSender = messageSender;
+            _diScope = diScope;
         }
 
         public NatsCommandReplyModel Get(CommandNatsAdapter data)
@@ -38,7 +38,8 @@ namespace In.Cqrs.Command.Nats.Implementations
 
         public Task<Result> ExecuteCmd(IMessage message)
         {
-            return _messageSender.SendAsync(message);
+            return _diScope.Resolve<IMessageSender>()
+                .SendAsync(message);
         }
     }
 }

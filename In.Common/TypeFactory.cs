@@ -8,9 +8,9 @@ namespace In.Common
 {
     public class TypeFactory : ITypeFactory
     {
-        private static Assembly[] Assemblies = AppDomain.CurrentDomain
+        private static readonly Assembly[] Assemblies = AppDomain.CurrentDomain
             .GetAssemblies()
-            .Where(asm => asm.FullName.StartsWith("In") || asm.FullName.StartsWith("SBN"))
+//            .Where(asm => !asm.FullName.StartsWith("System") && !asm.FullName.StartsWith("Microsoft"))
             .ToArray();
 
         private readonly ConcurrentDictionary<string, Type> _types = new ConcurrentDictionary<string, Type>();

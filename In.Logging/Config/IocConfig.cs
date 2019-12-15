@@ -8,7 +8,7 @@ namespace In.Logging.Config
         public static IServiceCollection AddLogger(this IServiceCollection services)
         {
             return services
-                .AddScoped<ILogService, LogService>();
+                .AddSingleton<ILogService, LogService>();
         }
     }
 }

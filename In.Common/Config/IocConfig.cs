@@ -7,7 +7,7 @@ namespace In.Common.Config
     {
         public static IServiceCollection AddCommon(this IServiceCollection services)
         {
-            return services.AddScoped<IDiScope, ServiceLocator>()
+            return services.AddSingleton<IDiScope, ServiceLocator>()
                 .AddSingleton<ITypeFactory, TypeFactory>();
         }
     }

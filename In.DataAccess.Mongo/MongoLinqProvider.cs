@@ -9,9 +9,9 @@ namespace In.DataAccess.Mongo
     {
         private readonly IMongoDatabase _database;
 
-        public MongoLinqProvider(IMongoDatabase database)
+        public MongoLinqProvider(IMongoCtx ctx)
         {
-            _database = database;
+            _database = ctx.Db;
         }
 
         public IQueryable<TEntity> GetQuery<TEntity>() where TEntity : class, IHasKey
