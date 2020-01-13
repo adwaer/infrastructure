@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <Authors>Adwaer Team</Authors>
-    <Company>Adwaer</Company>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>In.Infrastructure.FunctionalCSharp</PackageId>
-    <Version>0.0.1</Version>
-  </PropertyGroup>
-
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>In.Infrastructure.FunctionalCSharp</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.FunctionalCSharp</RootNamespace>
+    </PropertyGroup>
+    
 </Project>

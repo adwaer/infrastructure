@@ -2,16 +2,22 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>In.Infrastructure.Cqrs.Command</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.Cqrs.Command</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.0.0"/>
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\In.Common\In.Common.csproj" />
-      <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj" />
-      <ProjectReference Include="..\In.FunctionalCSharp\In.FunctionalCSharp.csproj" />
+        <ProjectReference Include="..\In.Common\In.Common.csproj"/>
+        <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj"/>
+        <ProjectReference Include="..\In.FunctionalCSharp\In.FunctionalCSharp.csproj"/>
     </ItemGroup>
 
 </Project>

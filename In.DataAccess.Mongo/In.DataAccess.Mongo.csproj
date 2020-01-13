@@ -2,17 +2,23 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>In.Infrastructure.DataAccess.Mongo</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.DataAccess.Mongo</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\In.Common\In.Common.csproj" />
-      <ProjectReference Include="..\In.Cqrs.Query\In.Cqrs.Query.csproj" />
-      <ProjectReference Include="..\In.DataAccess.EfCore\In.DataAccess.EfCore.csproj" />
-      <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj" />
+        <ProjectReference Include="..\In.Common\In.Common.csproj"/>
+        <ProjectReference Include="..\In.Cqrs.Query\In.Cqrs.Query.csproj"/>
+        <ProjectReference Include="..\In.DataAccess.EfCore\In.DataAccess.EfCore.csproj"/>
+        <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="MongoDB.Driver" Version="2.9.2" />
+        <PackageReference Include="MongoDB.Driver" Version="2.9.2"/>
     </ItemGroup>
 
 </Project>

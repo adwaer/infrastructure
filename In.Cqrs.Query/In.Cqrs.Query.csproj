@@ -2,6 +2,12 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>In.Infrastructure.Cqrs.Query</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.Cqrs.Query</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

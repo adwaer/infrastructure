@@ -2,15 +2,21 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp3.0</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>In.Infrastructure.Cqrs.Command.Nats</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.Cqrs.Command.Nats</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\In.Cqrs.Command\In.Cqrs.Command.csproj" />
-      <ProjectReference Include="..\In.Cqrs.Nats\In.Cqrs.Nats.csproj" />
+        <ProjectReference Include="..\In.Cqrs.Command\In.Cqrs.Command.csproj"/>
+        <ProjectReference Include="..\In.Cqrs.Nats\In.Cqrs.Nats.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="NATS.Client" Version="0.9.0" />
+        <PackageReference Include="NATS.Client" Version="0.9.0"/>
     </ItemGroup>
 
 </Project>
