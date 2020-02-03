@@ -9,6 +9,8 @@ namespace In.DataAccess.Repository.Abstract
     {
         Task<ICollection<T>> Find<T>(Expression<Func<T, bool>> expression) where T : class;
         Task<T> FindOne<T>(Expression<Func<T, bool>> expression) where T : class;
+        Task<T[]> GetAll<T>() where T : class;
+
         Task<int> CommitAsync();
 
         /* CRUD */

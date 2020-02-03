@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using In.DataAccess.Repository.Abstract;
-using MongoDB.Bson.IO;
+using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
 
 namespace In.DataAccess.Mongo
@@ -32,6 +31,14 @@ namespace In.DataAccess.Mongo
             using var cursor = await _database.GetCollection<T>(nameof(T))
                 .FindAsync(expression);
             return await cursor.FirstOrDefaultAsync();
+        }
+
+        public async Task<T[]> GetAll<T>() where T : class
+        {
+            return await _database
+                .GetCollection<T>(nameof(T))
+                .AsQueryable()
+                .ToArrayAsync();
         }
 
         public async Task<int> CommitAsync()

@@ -30,6 +30,12 @@ namespace In.DataAccess.EfCore.Implementations
                 .FirstOrDefaultAsync(expression);
         }
 
+        public Task<T[]> GetAll<T>() where T : class
+        {
+            return _dbContext.Set<T>()
+                .ToArrayAsync();
+        }
+
         public Task<int> CommitAsync()
         {
             return _dbContext.SaveChangesAsync();

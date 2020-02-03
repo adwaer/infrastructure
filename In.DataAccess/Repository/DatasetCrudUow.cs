@@ -25,6 +25,11 @@ namespace In.DataAccess.Repository
             return await _dataSetUow.FindOne(specification.ToExpression());
         }
 
+        public Task<TEntity[]> GetAll()
+        {
+            return _dataSetUow.GetAll<TEntity>();
+        }
+
         public void Add(TEntity data)
         {
             _dataSetUow.AddEntity(data);

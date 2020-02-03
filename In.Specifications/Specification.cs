@@ -10,7 +10,7 @@ namespace In.Specifications
         
         private Func<T, bool> _compiledExpression;
  
-        private Func<T, bool> CompiledExpression => _compiledExpression ?? (_compiledExpression = ToExpression().Compile());
+        private Func<T, bool> CompiledExpression => _compiledExpression ??= ToExpression().Compile();
 
         public bool IsSatisfiedBy(T obj)
         {
