@@ -5,13 +5,13 @@ namespace In.Cqrs.Command.Nats.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddNatsCommands<TMsgResult>(this IServiceCollection services) where TMsgResult : class, IMessageResult
+        public static IServiceCollection AddNatsCommandServices<TMsgResult>(this IServiceCollection services) where TMsgResult : class, IMessageResult
         {
             return services.AddScoped<IMessageSender, NatsMessageBus>()
                 .AddTransient<IMessageResult, TMsgResult>();
         }
         
-        public static IServiceCollection AddNatsCommandFactory(this IServiceCollection services)
+        public static IServiceCollection AddNatsCommandFactoryServices(this IServiceCollection services)
         {
             return services
                 .AddSingleton<INatsReceiverCommandQueueFactory, NatsReceiverCommandQueueFactory>()

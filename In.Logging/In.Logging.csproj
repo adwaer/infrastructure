@@ -7,6 +7,7 @@
         <PackageId>In.Infrastructure.Logging</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Logging</RootNamespace>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

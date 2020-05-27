@@ -9,7 +9,7 @@ namespace In.DDD.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddDdd(this IServiceCollection services,
+        public static IServiceCollection AddDddServices(this IServiceCollection services,
             Assembly[] assemblies)
         {
             return services.AddScoped<SimpleDomainEventRepository>(cf =>

@@ -5,7 +5,7 @@ namespace In.Logging.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddLogger(this IServiceCollection services)
+        public static IServiceCollection AddLoggerServices(this IServiceCollection services)
         {
             return services
                 .AddSingleton<ILogService, LogService>();

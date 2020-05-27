@@ -7,7 +7,7 @@ namespace In.Cqrs.Query.Nats.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddNatsQueries(this IServiceCollection services)
+        public static IServiceCollection AddNatsQueryServices(this IServiceCollection services)
         {
             return services
                 .AddScoped<IQueryBuilder, QueryBuilder>()
@@ -16,7 +16,7 @@ namespace In.Cqrs.Query.Nats.Config
                 .AddSingleton<INatsQueryReplyFactory, NatsQueryReplyFactory>();
         }
 
-        public static IServiceCollection AddNatsQueryFactory(this IServiceCollection services)
+        public static IServiceCollection AddNatsQueryFactoryServices(this IServiceCollection services)
         {
             return services.AddSingleton<INatsReceiverQueryQueueFactory, NatsReceiverQueryQueueFactory>()
                 .AddSingleton<INatsQueryReplyFactory, NatsQueryReplyFactory>();

@@ -16,7 +16,7 @@ namespace In.DataAccess.Mongo.Config
         /// <param name="services"></param>
         /// <param name="assemblies"></param>
         /// <returns></returns>
-        public static IServiceCollection AddMongo(this IServiceCollection services,
+        public static IServiceCollection AddMongoServices(this IServiceCollection services,
             Assembly[] assemblies)
         {
             return services

@@ -7,7 +7,7 @@ namespace In.Cqrs.Command.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddCommands<TMsgResult>(this IServiceCollection services,
+        public static IServiceCollection AddCommandServices<TMsgResult>(this IServiceCollection services,
             Assembly[] assemblies) where TMsgResult : class, IMessageResult
         {
             return services.AddScoped<IMessageSender, SimpleMsgBus>()

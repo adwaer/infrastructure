@@ -8,7 +8,7 @@ namespace In.Cqrs.Query.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddQueries(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection AddQueryServices(this IServiceCollection services, Assembly[] assemblies)
         {
             return services.AddScoped<IQueryBuilder, QueryBuilder>()
                 .AddScoped<IQueryFactory, QueryFactory>()

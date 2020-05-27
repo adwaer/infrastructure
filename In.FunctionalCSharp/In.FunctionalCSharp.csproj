@@ -7,6 +7,7 @@
         <PackageId>In.Infrastructure.FunctionalCSharp</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.FunctionalCSharp</RootNamespace>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     
 </Project>

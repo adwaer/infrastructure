@@ -18,7 +18,7 @@ namespace In.DataAccess.EfCore.Config
         /// <param name="assemblies"></param>
         /// <typeparam name="TCtx"></typeparam>
         /// <returns></returns>
-        public static IServiceCollection AddEfCore<TCtx>(this IServiceCollection services,
+        public static IServiceCollection AddEfCoreServices<TCtx>(this IServiceCollection services,
             Assembly[] assemblies) where TCtx: DbContext
         {
             return services

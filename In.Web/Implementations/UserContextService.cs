@@ -11,6 +11,7 @@ namespace In.Web.Implementations
     public class UserContextService : IUserContextService
     {
         private const string ClaimUserId = "UserId";
+        private const string AuthTokenHeader = "Authorization";
 
         private readonly HttpContext _httpContext;
 
@@ -45,8 +46,7 @@ namespace In.Web.Implementations
         /// <inheritdoc />
         public string GetAccessToken()
         {
-            throw new NotImplementedException();
-//            return _httpContext.GetTokenAsync(JwtBearerDefaults.AuthenticationScheme, "access_token").GetAwaiter().GetResult();
+            return _httpContext.Request.Headers[AuthTokenHeader];
         }
     }
 }
