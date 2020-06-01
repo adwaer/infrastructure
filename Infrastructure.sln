@@ -40,6 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataMapping", "DataMapping"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.DataMapping.Automapper", "In.DataMapping.Automapper\In.DataMapping.Automapper.csproj", "{6879C586-F096-4D73-803A-2A4F556121F9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "In.Auth", "In.Auth\In.Auth.csproj", "{95BA5DA0-B191-4789-9811-6D0CD2AC40DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -110,6 +112,10 @@ Global
 		{6879C586-F096-4D73-803A-2A4F556121F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6879C586-F096-4D73-803A-2A4F556121F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6879C586-F096-4D73-803A-2A4F556121F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BA5DA0-B191-4789-9811-6D0CD2AC40DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BA5DA0-B191-4789-9811-6D0CD2AC40DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BA5DA0-B191-4789-9811-6D0CD2AC40DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BA5DA0-B191-4789-9811-6D0CD2AC40DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{61253461-E662-4A1E-8C2B-9558319F0DE9} = {CBF8B0D1-BBD8-4ED5-BDFE-F5EDFD08D5C3}

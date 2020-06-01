@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <PackageId>In.Infrastructure.Auth</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.Auth</RootNamespace>
+        <LangVersion>8</LangVersion>
+        <OutputType>Library</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.4" />
+    </ItemGroup>
+
+</Project>

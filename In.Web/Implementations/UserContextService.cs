@@ -15,19 +15,18 @@ namespace In.Web.Implementations
 
         private readonly HttpContext _httpContext;
 
-        /// <inheritdoc />
         public UserContextService(IHttpContextAccessor httpContextAccessor)
         {
             _httpContext = httpContextAccessor.HttpContext;
         }
 
         /// <inheritdoc />
-        public Guid GetUserId()
+        public Guid GetUserId(string userIdClaim = ClaimUserId)
         {
-            var claimWithUserId = _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == ClaimUserId);
+            var claimWithUserId = _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == userIdClaim);
 
             if (claimWithUserId == null)
-                throw new UnauthorizedAccessException("Current user unathorized.");
+                throw new UnauthorizedAccessException("Current user unauthorized.");
 
             return new Guid(claimWithUserId.Value);
         }
@@ -35,18 +34,18 @@ namespace In.Web.Implementations
         /// <inheritdoc />
         public string GetUserEmail()
         {
-            var claimWithUserEmail = _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == ClaimsIdentity.DefaultNameClaimType);
+            var claimWithUserEmail =
+                _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == ClaimsIdentity.DefaultNameClaimType);
 
             if (claimWithUserEmail == null)
-                throw new UnauthorizedAccessException("Current user unathorized.");
+                throw new UnauthorizedAccessException("Current user unauthorized.");
 
             return claimWithUserEmail.Value;
         }
 
-        /// <inheritdoc />
-        public string GetAccessToken()
+        public string GetAccessToken(string headerName = AuthTokenHeader)
         {
-            return _httpContext.Request.Headers[AuthTokenHeader];
+            return _httpContext.Request.Headers[headerName];
         }
     }
 }

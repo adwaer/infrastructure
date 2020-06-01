@@ -11,7 +11,7 @@
         /// Get user unique identificator from context.
         /// </summary>
         /// <returns>Unique identificator.</returns>
-        Guid GetUserId();
+        Guid GetUserId(string userIdClaim);
 
         /// <summary>
         /// Get user email from context.
@@ -23,6 +23,6 @@
         /// Get user access token from context.
         /// </summary>
         /// <returns>Access token.</returns>
-        string GetAccessToken();
+        string GetAccessToken(string headerName);
     }
 }
