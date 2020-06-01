@@ -1,3 +1,5 @@
+<img src="https://ci.appveyor.com/api/projects/status/eh969xbccti5ow78/branch/master?svg=true" alt="Project Badge" width="300">
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/adwaer/infrastructure/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
