@@ -1,8 +1,9 @@
 ﻿using System.Threading.Tasks;
 using In.Common;
 using In.Cqrs.Query.Criterion.Abstract;
+using In.Cqrs.Query.Queries;
 
-namespace In.Cqrs.Query.Queries.Impls
+namespace In.Cqrs.Query.Simple
 {
     /// <summary>
     ///  Simple implementation

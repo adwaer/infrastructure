@@ -107,7 +107,7 @@ namespace In.Cqrs.Command.Nats.Implementations
                 (sender, args) =>
                 {
                     var result = (ResultAdapter) args.ReceivedObject;
-                    promise.SetResult(result.IsSuccess ? Result.Ok() : Result.Failure(result.Data));
+                    promise.SetResult(result.IsSuccess ? Result.Success() : Result.Failure(result.Data));
                     completed++;
                 });
             _subscriptions.Add(subscription);

@@ -32,7 +32,7 @@ namespace In.FunctionalCSharp
                 Result res;
                 if (param.value == null)
                     res = Result.Failure($"parameter {param.name} should be not null");
-                else res = Result.Ok();
+                else res = Result.Success();
                 results.Add(res);
             }
 
@@ -43,70 +43,70 @@ namespace In.FunctionalCSharp
         {
             if (String.IsNullOrWhiteSpace(value))
                 return Result.Failure($"parameter {name} should contain not empty string");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result NotDefaultValue(int value, string name)
         {
             if (value == default(int))
                 return Result.Failure($"parameter {name} should be not a default value ({value})");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result NotDefaultValue(long value, string name)
         {
             if (value == default(long))
                 return Result.Failure($"parameter {name} should be not a default value ({value})");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result NotDefaultValue(Guid value, string name)
         {
             if (value == Guid.Empty)
                 return Result.Failure($"parameter {name} should be not a default value ({value})");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result NotDefaultValue(DateTimeOffset value, string name)
         {
             if (value == default(DateTimeOffset))
                 return Result.Failure($"parameter {name} should be not a default value ({value})");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result NotDefaultValue(decimal value, string name)
         {
             if (value == default(decimal))
                 return Result.Failure($"parameter {name} should be not a default value ({value})");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result GreaterOrEqual(Int32 value, Int32 valueToCompare, string name)
         {
             if (value < valueToCompare)
                 return Result.Failure($"parameter {name} should be greater or equal to {valueToCompare}");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result NotNull(object value, string name)
         {
             if (value == null)
                 return Result.Failure($"parameter {name} should be not null");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result Ensure<T>(T value, Func<T, bool> predicate, string name, string errorText = null)
         {
             if (!predicate(value))
                 return Result.Failure(errorText ?? $"parameter {name} did not pass parameter validation");
-            return Result.Ok();
+            return Result.Success();
         }
 
         public static Result Ensure(Func<bool> predicate, string name, string errorText = null)
         {
             if (!predicate())
                 return Result.Failure(errorText ?? $"parameter {name} did not pass parameter validation");
-            return Result.Ok();
+            return Result.Success();
         }
     }
 }

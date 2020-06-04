@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <PackageId>In.Infrastructure.Cqrs.Command.Simple</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.Cqrs.Command.Simple</RootNamespace>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\In.Common\In.Common.csproj" />
+      <ProjectReference Include="..\In.Cqrs.Command\In.Cqrs.Command.csproj" />
+    </ItemGroup>
+
+</Project>

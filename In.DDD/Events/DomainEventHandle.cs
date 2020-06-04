@@ -7,20 +7,16 @@ namespace In.DDD.Events
         where TDomainEvent : DomainEvent
     {
         readonly IDomainEventRepository _domainEventRepository;
-        readonly IRequestCorrelationIdentifier _requestCorrelationIdentifier;
 
-        public DomainEventHandle(IDomainEventRepository domainEventRepository, 
-            IRequestCorrelationIdentifier requestCorrelationIdentifier)
+        public DomainEventHandle(IDomainEventRepository domainEventRepository)
         {
             _domainEventRepository = domainEventRepository;
-            _requestCorrelationIdentifier = requestCorrelationIdentifier;
         }
 
         public void Handle(TDomainEvent @event)
         {
             @event.Flatten();
-            @event.CorrelationId = _requestCorrelationIdentifier.CorrelationId;
-            this._domainEventRepository.Add(@event);
+            _domainEventRepository.Add(@event);
         }
     }
 }

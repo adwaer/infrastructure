@@ -3,7 +3,7 @@ using In.Common;
 using In.Cqrs.Command.Implementations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace In.Cqrs.Command.Config
+namespace In.Cqrs.Command.Simple.Config
 {
     public static class IocConfig
     {

@@ -1,10 +1,9 @@
 using System.Reflection;
 using In.Common;
 using In.Cqrs.Query.Queries;
-using In.Cqrs.Query.Queries.Impls;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace In.Cqrs.Query.Config
+namespace In.Cqrs.Query.Simple.Config
 {
     public static class IocConfig
     {

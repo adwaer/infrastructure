@@ -1,13 +1,13 @@
 using In.Cqrs.Query.Nats.Implementations;
 using In.Cqrs.Query.Queries;
-using In.Cqrs.Query.Queries.Impls;
+using In.Cqrs.Query.Simple;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace In.Cqrs.Query.Nats.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddNatsQueryServices(this IServiceCollection services)
+        public static IServiceCollection AddNatsQueryMaster(this IServiceCollection services)
         {
             return services
                 .AddScoped<IQueryBuilder, QueryBuilder>()
@@ -16,7 +16,7 @@ namespace In.Cqrs.Query.Nats.Config
                 .AddSingleton<INatsQueryReplyFactory, NatsQueryReplyFactory>();
         }
 
-        public static IServiceCollection AddNatsQueryFactoryServices(this IServiceCollection services)
+        public static IServiceCollection AddNatsQuerySlave(this IServiceCollection services)
         {
             return services.AddSingleton<INatsReceiverQueryQueueFactory, NatsReceiverQueryQueueFactory>()
                 .AddSingleton<INatsQueryReplyFactory, NatsQueryReplyFactory>();

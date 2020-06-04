@@ -1,39 +1,104 @@
 <img src="https://ci.appveyor.com/api/projects/status/eh969xbccti5ow78/branch/master?svg=true" alt="Project Badge" width="300">
 
-## Welcome to GitHub Pages
+## Service configuration
 
-You can use the [editor on GitHub](https://github.com/adwaer/infrastructure/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Configurations:
+1. In.Common:
+  _ There are services and helpers _
+ Ioc method: **AddCommonServices**
+ 
+ Adds:
+ - IDiScope:      service locator
+ - ITypeFactory:  try to get Type be string
+ Helpers:
+ - AsyncHelpers:  runs task in the sync mode
+ - IocExtensions: extensions for Ioc:
+      `RegisterAssemblyImplementationsScoped,
+      RegisterAssemblyImplementationsSingleton,
+      AddScopedGenerics`
+      
+2. In.Web:
+  There are services and middleware
+  Ioc method: **AddWebServices**
+  Adds:
+  - IUserContextService:  uses in controller for getting user data
+  
+  Middleware method: **UseErrorsMiddleware**
+  - Unhandled exceptions wrapper
+3. In.Auth:
+  There are configuration extensions:
+    - AddAuthOptions
+    - AddAuth
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+3. In.Specifications
+  There are Specification pattern and a helper:
+  **Specifications** - Main functional class, have and/or/not implementations
+  **Utility** - helpers
 
-### Markdown
+4. In.Logging
+  There are services for logging
+  Ioc method: **AddLoggerServices**
+  Add:
+    - ILogService: logging methods
+    
+5. In.FunctionalCSharp
+  There are Functional extensions for business logic
+  **Result** - Main functional class
+  
+6. In.DDD (**Not ready yet!**)
+  There are domain events and handlers
+  Ioc method: **AddWebServices**
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/adwaer/infrastructure/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+7. In.DataMapping
+  There are IMapperService abstraction only
+  **Implementations libs**:
+    - In.DataMapping.Automapper
+  
+8. In.DataAccess
+  There are abstractions for Domain like IHasKey
+  Repositury abstractions:
+    - IDatasetUow
+    - ILinqProvider
+    - IRepository
+    
+  **Implementations libs**:
+    - In.DataAccess.EfCore
+    - In.DataAccess.Mongo
+    
+9. In.Cqrs.Command
+  There are abstractions for commands and handlers
+  Abstractions:
+    - ICommandHandler
+    - IMessage
+    - IMessageResult
+    - IMessageSender
+  
+  **Implementations libs**:
+    - In.Cqrs.Command.Simple
+        There are simple in proccess message bus
+        Ioc ext: **AddCommandServices** - registres:
+          - IMessageResult
+          - SimpleMsgBus
+          - Lookup for handlers in assemblies in param
+    - In.Cqrs.Command.Nats
+        There are implementations for NatsMsgBus and queue & reply implementations
+        
+10. In.Cqrs.Query
+    There are abstractions for commands and handlers
+    Abstractions:
+      - ICriterion
+      - IQueryBuilder
+      - IQueryFactory
+      - IQueryFor
+      - IQueryHandler
+      - IGenericQuery
+      - IGenericQueryBuilder
+      - ISingleQueryResult
+      - IMultipleQueryResult
+      
+     **Implementations libs**:
+     - In.Cqrs.Query.Simple
+      There are simple im process message handlers
+     - In.Cqrs.Query.Nats
+      There are Nats query handlers implementations for a master and a slave
+      

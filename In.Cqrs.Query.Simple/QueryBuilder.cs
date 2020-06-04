@@ -1,8 +1,9 @@
 ﻿using In.Common;
+using In.Cqrs.Query.Queries;
 using In.Cqrs.Query.Queries.Generic;
 using In.DataAccess.Entity.Abstract;
 
-namespace In.Cqrs.Query.Queries.Impls
+namespace In.Cqrs.Query.Simple
 {
     public class QueryBuilder : IQueryBuilder
     {

@@ -15,7 +15,9 @@ namespace In.DDD.Repository.Implementations
                 {
                     Created = domainEvent.Created,
                     Type = domainEvent.Type,
-                    Args = domainEvent.Args.Select(kv => new KeyValuePair<string, string>(kv.Key, kv.Value.ToString())).ToList(),
+                    Args = domainEvent.Args
+                        .Select(kv => new KeyValuePair<string, string>(kv.Key, kv.Value.ToString()))
+                        .ToList(),
                     CorrelationID = domainEvent.CorrelationId
                 });
         }

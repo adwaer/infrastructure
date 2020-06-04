@@ -18,6 +18,7 @@
         <ProjectReference Include="..\In.Common\In.Common.csproj" />
         <ProjectReference Include="..\In.Cqrs.Command.Nats\In.Cqrs.Command.Nats.csproj" />
         <ProjectReference Include="..\In.Cqrs.Nats\In.Cqrs.Nats.csproj" />
+        <ProjectReference Include="..\In.Cqrs.Query.Simple\In.Cqrs.Query.Simple.csproj" />
         <ProjectReference Include="..\In.Cqrs.Query\In.Cqrs.Query.csproj" />
     </ItemGroup>
 
