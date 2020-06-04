@@ -9,6 +9,7 @@
         <RootNamespace>In.Auth</RootNamespace>
         <LangVersion>8</LangVersion>
         <OutputType>Library</OutputType>
+        <IsPackable>true</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
