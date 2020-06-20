@@ -31,13 +31,13 @@ namespace In.Web.Nats
         
         /// <summary>
         /// Adds common services
-        /// </summary>
-        /// <param name="assemblies"> assemblies with ddd repositories and event handlers</param>
+        /// </summary
         /// <returns></returns>
-        public IServiceCollection AddCommonServices(Assembly[] assemblies)
+        public IServiceCollection AddCommonServices()
         {
-            var builder = new DddModuleBuilder(_collection, assemblies);
+            var builder = new CommonModuleBuilder(_collection);
             return builder.AddServices();
+            
         }
 
         /// <summary>
@@ -50,9 +50,14 @@ namespace In.Web.Nats
             return builder.AddServices();
         }
         
-        public IServiceCollection AddDDD()
+        /// <summary>
+        /// Add ddd services
+        /// </summary>
+        /// <param name="assemblies">assemblies with ddd repositories and event handlers</param>
+        /// <returns></returns>
+        public IServiceCollection AddDDD(Assembly[] assemblies)
         {
-            var builder = new CommonModuleBuilder(_collection);
+            var builder = new DddModuleBuilder(_collection, assemblies);
             return builder.AddServices();
         }
 
