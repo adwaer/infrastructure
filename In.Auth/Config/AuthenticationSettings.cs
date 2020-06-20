@@ -1,4 +1,4 @@
-﻿﻿namespace In.Auth
+﻿﻿namespace In.Auth.Config
 {
     public class AuthenticationSettings
     {

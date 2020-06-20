@@ -1,7 +1,7 @@
 ﻿namespace In.DataMapping
 {
-    public interface IMapperService<out TDest, in TDto>
+    public interface IMapperService
     {
-        TDest GetFrom(TDto model, object mappingData = null);
+        TDest GetFrom<TDest, TFrom>(TFrom model);
     }
 }

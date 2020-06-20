@@ -1,6 +1,6 @@
 ﻿﻿using System;
 
- namespace In.Web
+ namespace In.Auth.Services
 {
     /// <summary>
     /// Service for received user info from context.

@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <Authors>Adwaer Team</Authors>
+        <Company>Adwaer</Company>
+        <PackageId>In.Infrastructure.Auth.Identity.Server</PackageId>
+        <Version>0.0.1</Version>
+        <RootNamespace>In.Auth.Identity.Server</RootNamespace>
+        <LangVersion>8</LangVersion>
+        <OutputType>Library</OutputType>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Google.Apis.Auth" Version="1.46.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
+      <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.4" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\In.AppBuilder\In.AppBuilder.csproj" />
+      <ProjectReference Include="..\In.Auth\In.Auth.csproj" />
+      <ProjectReference Include="..\In.DataMapping\In.DataMapping.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Security.Claims;
+using In.Auth.Config;
 using Microsoft.AspNetCore.Http;
 
-namespace In.Web.Implementations
+namespace In.Auth.Services.Implementations
 {
     /// <summary>
     /// Service for received user info from context.
     /// </summary>
     public class UserContextService : IUserContextService
     {
-        private const string ClaimUserId = "UserId";
         private const string AuthTokenHeader = "Authorization";
 
         private readonly HttpContext _httpContext;
@@ -21,7 +21,7 @@ namespace In.Web.Implementations
         }
 
         /// <inheritdoc />
-        public Guid GetUserId(string userIdClaim = ClaimUserId)
+        public Guid GetUserId(string userIdClaim = ClaimsHelper.ClaimUserId)
         {
             var claimWithUserId = _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == userIdClaim);
 
