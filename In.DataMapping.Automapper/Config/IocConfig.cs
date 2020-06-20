@@ -24,8 +24,7 @@ namespace In.DataMapping.Automapper.Config
                     foreach (var profile in provider.GetService<IEnumerable<Profile>>())
                         cfg.AddProfile(profile);
                 }))
-                .AddScoped(typeof(IMapperService<,>), typeof(DefaultMapperService<,>))
-                .RegisterAssemblyImplementationsScoped(assemblies, typeof(IMapperService<,>))
+                .AddScoped(typeof(IMapperService), typeof(DefaultMapperService))
                 .AddAutoMapper(assemblies);
         }
     }

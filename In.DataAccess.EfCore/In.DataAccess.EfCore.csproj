@@ -16,6 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\In.AppBuilder\In.AppBuilder.csproj" />
         <ProjectReference Include="..\In.Cqrs.Command\In.Cqrs.Command.csproj" />
         <ProjectReference Include="..\In.Cqrs.Query\In.Cqrs.Query.csproj" />
     </ItemGroup>

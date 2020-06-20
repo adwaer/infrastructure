@@ -2,7 +2,7 @@
 
 namespace In.DataMapping.Automapper
 {
-    public class DefaultMapperService<TDest, TDto> : IMapperService<TDest, TDto>
+    public class DefaultMapperService : IMapperService
     {
         private readonly IMapper _mapper;
 
@@ -11,7 +11,7 @@ namespace In.DataMapping.Automapper
             _mapper = mapper;
         }
 
-        public TDest GetFrom(TDto model, object mappingData = null)
+        public TDest GetFrom<TDest, TFrom>(TFrom model)
         {
             return _mapper.Map<TDest>(model);
         }

@@ -1,5 +1,15 @@
 <img src="https://ci.appveyor.com/api/projects/status/eh969xbccti5ow78/branch/master?svg=true" alt="Project Badge" width="300">
 
+## Getting started
+
+The project aims to quickly configure the CQRS architecture.
+There are two settings ways:
+1. Api -> inprocess command & query handlers
+2. Api -> NATS message bus -> hosts which handle messages and send them with inprocess handlers
+
+Ioc config helper you can find [here](docs/ProjectBuilder.cs)
+All projects has nuget packages, all of them starts with: In.Infrastructure
+
 ## Service configuration
 
 Configurations:

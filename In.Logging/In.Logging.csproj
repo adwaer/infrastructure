@@ -15,4 +15,8 @@
       <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\In.AppBuilder\In.AppBuilder.csproj" />
+    </ItemGroup>
+
 </Project>
