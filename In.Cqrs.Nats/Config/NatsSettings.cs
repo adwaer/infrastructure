@@ -3,7 +3,7 @@
     /// <summary>
     /// Nats options contract
     /// </summary>
-    public class NatsSenderOptions
+    public class NatsSettings
     {
         /// <summary>
         /// Url

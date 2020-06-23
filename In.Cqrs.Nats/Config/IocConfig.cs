@@ -6,7 +6,7 @@ namespace In.Cqrs.Nats.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddNatsServices(this IServiceCollection services, NatsSenderOptions natsSenderOptions)
+        public static IServiceCollection AddNatsServices(this IServiceCollection services, NatsSettings natsSenderOptions)
         {
             return services.AddSingleton<INatsSerializer, NatsSerializer>()
                 .AddSingleton<INatsConnectionFactory>(cf =>

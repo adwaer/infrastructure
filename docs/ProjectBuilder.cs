@@ -109,17 +109,28 @@ namespace In.Web.Nats
             var builder = new SimpleQueryModuleBuilder(_collection, handlersAssemblies);
             return builder.AddServices();
         }
-
+        
         /// <summary>
-        /// Add NATS command sender
+        /// Add NATS settings
         /// </summary>
         /// <param name="natsSettings"></param>
         /// <typeparam name="TMsgResult"></typeparam>
         /// <returns></returns>
-        public IServiceCollection AddCqrsNatsCommandSender<TMsgResult>(NatsSenderOptions natsSettings)
+        public IServiceCollection AddCqrsNats(NatsSenderOptions natsSettings)
+        {
+            var builder = new NatsModuleBuilder(_collection, natsSettings);
+            return builder.AddServices();
+        }
+
+        /// <summary>
+        /// Add NATS command sender
+        /// </summary>
+        /// <typeparam name="TMsgResult"></typeparam>
+        /// <returns></returns>
+        public IServiceCollection AddCqrsNatsCommandSender<TMsgResult>()
             where TMsgResult : class, IMessageResult
         {
-            var builder = new NatsCommandMasterModuleBuilder<TMsgResult>(_collection, natsSettings);
+            var builder = new NatsCommandMasterModuleBuilder<TMsgResult>(_collection);
             return builder.AddServices();
         }
 
@@ -128,31 +139,29 @@ namespace In.Web.Nats
         /// </summary>
         /// <param name="natsSettings"></param>
         /// <returns></returns>
-        public IServiceCollection AddCqrsNatsCommandHandlers(NatsSenderOptions natsSettings)
+        public IServiceCollection AddCqrsNatsCommandHandlers()
         {
-            var builder = new NatsCommandSlaveModuleBuilder(_collection, natsSettings);
+            var builder = new NatsCommandSlaveModuleBuilder(_collection);
             return builder.AddServices();
         }
 
         /// <summary>
         /// Add NATS query builder
         /// </summary>
-        /// <param name="natsSettings"></param>
         /// <returns></returns>
-        public IServiceCollection AddCqrsNatsQueryBuilder(NatsSenderOptions natsSettings)
+        public IServiceCollection AddCqrsNatsQueryBuilder()
         {
-            var builder = new NatsQueryMasterModuleBuilder(_collection, natsSettings);
+            var builder = new NatsQueryMasterModuleBuilder(_collection);
             return builder.AddServices();
         }
 
         /// <summary>
         /// Add NATS query handlers
         /// </summary>
-        /// <param name="natsSettings"></param>
         /// <returns></returns>
-        public IServiceCollection AddCqrsNatsQueryHandler(NatsSenderOptions natsSettings)
+        public IServiceCollection AddCqrsNatsQueryHandler()
         {
-            var builder = new NatsQuerySlaveModuleBuilder(_collection, natsSettings);
+            var builder = new NatsQuerySlaveModuleBuilder(_collection);
             return builder.AddServices();
         }
 
@@ -179,7 +188,6 @@ namespace In.Web.Nats
             return builder.AddServices();
         }
 
-        
         /// <summary>
         /// Add automapper mappings
         /// </summary>
