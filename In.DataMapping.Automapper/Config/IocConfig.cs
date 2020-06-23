@@ -9,7 +9,7 @@ namespace In.DataMapping.Automapper.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddMappingServices(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection AddMappingServices(this IServiceCollection services, params Assembly[] assemblies)
         {
             var mappingProfiles = assemblies.SelectMany(a =>
                 a.DefinedTypes.Where(t => t.BaseType == typeof(Profile) && !t.IsAbstract && t.IsPublic));

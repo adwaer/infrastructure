@@ -9,7 +9,7 @@ namespace In.Common
     public static class IocExtensions
     {
         public static IServiceCollection RegisterAssemblyImplementationsScoped(this IServiceCollection services,
-            Assembly[] assemblies, Type type)
+            Type type, params Assembly[] assemblies)
         {
             return services.Scan(
                 x =>
@@ -20,7 +20,7 @@ namespace In.Common
         }
         
         public static IServiceCollection RegisterAssemblyImplementationsSingleton(this IServiceCollection services,
-            Assembly[] assemblies, Type type)
+            Type type, params Assembly[] assemblies)
         {
             return services.Scan(
                 x =>

@@ -8,7 +8,7 @@ namespace In.DDD.Config
     {
         private readonly Assembly[] _assemblies;
 
-        public DddModuleBuilder(IServiceCollection services, Assembly[] assemblies)
+        public DddModuleBuilder(IServiceCollection services, params Assembly[] assemblies)
             : base(services)
         {
             _assemblies = assemblies;

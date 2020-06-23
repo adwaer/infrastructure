@@ -17,13 +17,13 @@ namespace In.DataAccess.Mongo.Config
         /// <param name="assemblies"></param>
         /// <returns></returns>
         public static IServiceCollection AddMongoServices(this IServiceCollection services,
-            Assembly[] assemblies)
+            params Assembly[] assemblies)
         {
             return services
                 .AddScoped<IDataSetUow, MongoDatasetUow>()
                 .AddScoped<ILinqProvider, MongoLinqProvider>()
                 .AddScoped(typeof(IRepository<>), typeof(DatasetCrudUow<>))
-                .RegisterAssemblyImplementationsScoped(assemblies, typeof(IRepository<>))
+                .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
                 .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan
                     .FromAssemblies(assemblies)

@@ -19,14 +19,14 @@ namespace In.DataAccess.EfCore.Config
         /// <typeparam name="TCtx"></typeparam>
         /// <returns></returns>
         public static IServiceCollection AddEfCoreServices<TCtx>(this IServiceCollection services,
-            Assembly[] assemblies) where TCtx: DbContext
+            params Assembly[] assemblies) where TCtx: DbContext
         {
             return services
                 .AddScoped<DbContext, TCtx>()
                 .AddScoped<IDataSetUow, EfDatasetUow>()
                 .AddScoped<ILinqProvider, EfLinqProvider>()
                 .AddScoped(typeof(IRepository<>), typeof(DatasetCrudUow<>))
-                .RegisterAssemblyImplementationsScoped(assemblies, typeof(IRepository<>))
+                .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
                 .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan
                     .FromAssemblies(assemblies)

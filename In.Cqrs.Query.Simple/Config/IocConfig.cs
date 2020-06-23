@@ -7,12 +7,12 @@ namespace In.Cqrs.Query.Simple.Config
 {
     public static class IocConfig
     {
-        public static IServiceCollection AddQueryServices(this IServiceCollection services, Assembly[] assemblies)
+        public static IServiceCollection AddQueryServices(this IServiceCollection services, params Assembly[] assemblies)
         {
             return services.AddScoped<IQueryBuilder, QueryBuilder>()
                 .AddScoped<IQueryFactory, QueryFactory>()
                 .AddSingleton(typeof(IQueryFor<>), typeof(QueryFor<>))
-                .RegisterAssemblyImplementationsScoped(assemblies, typeof(IQueryHandler<,>));
+                .RegisterAssemblyImplementationsScoped(typeof(IQueryHandler<,>), assemblies);
         }
     }
 }

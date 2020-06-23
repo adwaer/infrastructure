@@ -9,7 +9,7 @@ namespace In.DataAccess.EfCore.Config
     {
         private readonly Assembly[] _assemblies;
 
-        public DataAccessEfCoreModuleBuilder(IServiceCollection services, Assembly[] assemblies)
+        public DataAccessEfCoreModuleBuilder(IServiceCollection services, params Assembly[] assemblies)
             : base(services)
         {
             _assemblies = assemblies;

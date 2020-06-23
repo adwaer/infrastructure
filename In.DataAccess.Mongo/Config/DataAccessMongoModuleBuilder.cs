@@ -8,7 +8,7 @@ namespace In.DataAccess.Mongo.Config
     {
         private readonly Assembly[] _assemblies;
 
-        public DataAccessMongoModuleBuilder(IServiceCollection services, Assembly[] assemblies)
+        public DataAccessMongoModuleBuilder(IServiceCollection services, params Assembly[] assemblies)
             : base(services)
         {
             _assemblies = assemblies;

@@ -7,12 +7,12 @@ namespace In.Cqrs.Command.Simple.Config
     public static class IocConfig
     {
         public static IServiceCollection AddCommandServices<TMsgResult>(this IServiceCollection services,
-            Assembly[] assemblies) where TMsgResult : class, IMessageResult
+            params Assembly[] assemblies) where TMsgResult : class, IMessageResult
         {
             return services.AddScoped<IMessageSender, SimpleMsgBus>()
                 .AddTransient<IMessageResult, TMsgResult>()
-                .RegisterAssemblyImplementationsScoped(assemblies, typeof(ICommandHandler<>))
-                .RegisterAssemblyImplementationsScoped(assemblies, typeof(ICommandHandler<,>));
+                .RegisterAssemblyImplementationsScoped(typeof(ICommandHandler<>), assemblies)
+                .RegisterAssemblyImplementationsScoped(typeof(ICommandHandler<,>), assemblies);
         }
     }
 }

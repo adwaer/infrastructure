@@ -8,7 +8,7 @@ namespace In.Cqrs.Command.Simple.Config
     {
         private readonly Assembly[] _assemblies;
 
-        public SimpleCommandModuleBuilder(IServiceCollection services, Assembly[] assemblies) : base(services)
+        public SimpleCommandModuleBuilder(IServiceCollection services, params Assembly[] assemblies) : base(services)
         {
             _assemblies = assemblies;
         }

@@ -8,7 +8,7 @@ namespace In.Cqrs.Query.Simple.Config
     {
         private readonly Assembly[] _assemblies;
 
-        public SimpleQueryModuleBuilder(IServiceCollection services, Assembly[] assemblies) : base(services)
+        public SimpleQueryModuleBuilder(IServiceCollection services, params Assembly[] assemblies) : base(services)
         {
             _assemblies = assemblies;
         }

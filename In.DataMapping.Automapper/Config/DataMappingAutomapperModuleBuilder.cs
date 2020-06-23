@@ -8,7 +8,7 @@ namespace In.DataMapping.Automapper.Config
     {
         private readonly Assembly[] _assemblies;
 
-        public DataMappingAutomapperModuleBuilder(IServiceCollection services, Assembly[] assemblies)
+        public DataMappingAutomapperModuleBuilder(IServiceCollection services, params Assembly[] assemblies)
             : base(services)
         {
             _assemblies = assemblies;
