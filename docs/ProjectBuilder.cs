@@ -116,7 +116,7 @@ namespace In.Web.Nats
         /// <param name="natsSettings"></param>
         /// <typeparam name="TMsgResult"></typeparam>
         /// <returns></returns>
-        public IServiceCollection AddCqrsNats(NatsSenderOptions natsSettings)
+        public IServiceCollection AddCqrsNats(NatsSettings natsSettings)
         {
             var builder = new NatsModuleBuilder(_collection, natsSettings);
             return builder.AddServices();

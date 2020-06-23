@@ -3,12 +3,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
 using In.Common;
 using In.DataAccess.Repository.Abstract;
+using In.FunctionalCSharp;
 using Newtonsoft.Json.Linq;
 
-namespace In.Cqrs.Command.Implementations
+namespace In.Cqrs.Command.Simple
 {
     [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global")]
     public class SimpleMsgBus : IMessageSender

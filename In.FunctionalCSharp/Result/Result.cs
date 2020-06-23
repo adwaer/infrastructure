@@ -1,8 +1,8 @@
-﻿using CSharpFunctionalExtensions.Internal;
+﻿using In.FunctionalCSharp.Internal;
 using System;
 using System.Runtime.Serialization;
 
-namespace CSharpFunctionalExtensions
+namespace In.FunctionalCSharp
 {
     [Serializable]
     public partial struct Result : IResult, ISerializable

@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
+using In.FunctionalCSharp;
 
 namespace In.Cqrs.Command
 {

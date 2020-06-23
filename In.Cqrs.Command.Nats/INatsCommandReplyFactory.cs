@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
 using In.Cqrs.Command.Nats.Adapters;
 using In.Cqrs.Command.Nats.Models;
+using In.FunctionalCSharp;
 
 namespace In.Cqrs.Command.Nats
 {

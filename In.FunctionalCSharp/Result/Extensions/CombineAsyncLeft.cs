@@ -8,7 +8,7 @@ using Task = System.Threading.Tasks.TaskEx;
 using Task = System.Threading.Tasks.Task;
 #endif
 
-namespace CSharpFunctionalExtensions
+namespace In.FunctionalCSharp
 {
     public static partial class AsyncResultExtensionsLeftOperand
     {

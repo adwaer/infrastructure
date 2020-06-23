@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
 using In.Common;
 using In.Cqrs.Command.Nats.Adapters;
 using In.Cqrs.Nats.Abstract;
 using In.DataAccess.Repository.Abstract;
+using In.FunctionalCSharp;
 using NATS.Client;
 using Newtonsoft.Json.Linq;
 

@@ -2,7 +2,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace CSharpFunctionalExtensions
+namespace In.FunctionalCSharp
 {
     public static partial class ResultExtensions
     {

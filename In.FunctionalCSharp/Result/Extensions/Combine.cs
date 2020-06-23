@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using In.FunctionalCSharp;
 
-namespace CSharpFunctionalExtensions
+namespace In.FunctionalCSharp
 {
     public static partial class ResultExtensions
     {

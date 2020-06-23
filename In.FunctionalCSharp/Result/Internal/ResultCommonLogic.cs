@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace CSharpFunctionalExtensions.Internal
+namespace In.FunctionalCSharp.Internal
 {
     internal struct ResultCommonLogic<E>
     {

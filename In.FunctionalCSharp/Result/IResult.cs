@@ -1,4 +1,4 @@
-﻿namespace CSharpFunctionalExtensions
+﻿namespace In.FunctionalCSharp
 {
     public interface IResult
     {

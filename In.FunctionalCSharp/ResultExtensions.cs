@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
 
 namespace In.FunctionalCSharp
 {
-    public static class ResultExtensions
+    public static partial class ResultExtensions
     {
         public static Result OnAllSuccess(this IEnumerable<Result> results, Action action)
         {

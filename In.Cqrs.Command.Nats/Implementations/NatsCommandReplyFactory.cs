@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using CSharpFunctionalExtensions;
 using In.Common;
 using In.Cqrs.Command.Nats.Adapters;
 using In.Cqrs.Command.Nats.Models;
 using In.Cqrs.Nats.Abstract;
+using In.FunctionalCSharp;
 
 namespace In.Cqrs.Command.Nats.Implementations
 {

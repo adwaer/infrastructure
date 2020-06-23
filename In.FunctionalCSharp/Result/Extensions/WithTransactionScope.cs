@@ -3,7 +3,7 @@ using System;
 using System.Threading.Tasks;
 using System.Transactions;
 
-namespace CSharpFunctionalExtensions
+namespace In.FunctionalCSharp
 {
     public static partial class ResultExtensions
     {
