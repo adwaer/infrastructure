@@ -11,8 +11,8 @@ namespace In.Cqrs.Command.Simple.Config
         {
             return services.AddScoped<IMessageSender, SimpleMsgBus>()
                 .AddTransient<IMessageResult, TMsgResult>()
-                .RegisterAssemblyImplementationsScoped(typeof(ICommandHandler<>), assemblies)
-                .RegisterAssemblyImplementationsScoped(typeof(ICommandHandler<,>), assemblies);
+                .RegisterAssemblyImplementationsTransient(typeof(ICommandHandler<>), assemblies)
+                .RegisterAssemblyImplementationsTransient(typeof(ICommandHandler<,>), assemblies);
         }
     }
 }

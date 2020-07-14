@@ -9,10 +9,10 @@ namespace In.Cqrs.Query.Simple.Config
     {
         public static IServiceCollection AddQueryServices(this IServiceCollection services, params Assembly[] assemblies)
         {
-            return services.AddScoped<IQueryBuilder, QueryBuilder>()
-                .AddScoped<IQueryFactory, QueryFactory>()
+            return services.AddTransient<IQueryBuilder, QueryBuilder>()
+                .AddTransient<IQueryFactory, QueryFactory>()
                 .AddSingleton(typeof(IQueryFor<>), typeof(QueryFor<>))
-                .RegisterAssemblyImplementationsScoped(typeof(IQueryHandler<,>), assemblies);
+                .RegisterAssemblyImplementationsTransient(typeof(IQueryHandler<,>), assemblies);
         }
     }
 }

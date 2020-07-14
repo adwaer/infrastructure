@@ -173,6 +173,8 @@ namespace In.Web.Nats
         /// <returns></returns>
         public IServiceCollection AddDAEfCoreProviders<TCtx>(Assembly[] repositoryAssemblies) where TCtx : DbContext
         {
+            // don't forget init db provider!
+            
             var builder = new DataAccessEfCoreModuleBuilder<TCtx>(_collection, repositoryAssemblies);
             return builder.AddServices();
         }

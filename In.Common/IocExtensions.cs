@@ -19,6 +19,17 @@ namespace In.Common
                         .WithScopedLifetime());
         }
         
+        public static IServiceCollection RegisterAssemblyImplementationsTransient(this IServiceCollection services,
+            Type type, params Assembly[] assemblies)
+        {
+            return services.Scan(
+                x =>
+                    x.FromAssemblies(assemblies)
+                        .AddClasses(classes => classes.AssignableTo(type))
+                        .AsImplementedInterfaces()
+                        .WithTransientLifetime());
+        }
+        
         public static IServiceCollection RegisterAssemblyImplementationsSingleton(this IServiceCollection services,
             Type type, params Assembly[] assemblies)
         {
