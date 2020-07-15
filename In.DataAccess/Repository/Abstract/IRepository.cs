@@ -11,6 +11,7 @@ namespace In.DataAccess.Repository.Abstract
         Task<TResult[]> GetAll();
         
         void Add(TResult data);
+        void Update(TResult entity);
         void Remove(TResult data);
         Task Save();
     }

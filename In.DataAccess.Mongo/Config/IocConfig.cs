@@ -22,7 +22,7 @@ namespace In.DataAccess.Mongo.Config
             return services
                 .AddScoped<IDataSetUow, MongoDatasetUow>()
                 .AddScoped<ILinqProvider, MongoLinqProvider>()
-                .AddScoped(typeof(IRepository<>), typeof(DatasetCrudUow<>))
+                .AddScoped(typeof(IRepository<>), typeof(SimpleRepository<>))
                 .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
                 .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan

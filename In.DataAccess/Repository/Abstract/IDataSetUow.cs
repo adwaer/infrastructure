@@ -16,6 +16,7 @@ namespace In.DataAccess.Repository.Abstract
         /* CRUD */
         void AddEntity<T>(T entity) where T : class;
         void AddRange<T>(IEnumerable<T> entity) where T : class;
+        void Update<T>(T entity) where T : class;
         void RemoveEntity<T>(T entity) where T : class;
         void RemoveRange<T>(IEnumerable<T> entity) where T : class;
         int Commit();

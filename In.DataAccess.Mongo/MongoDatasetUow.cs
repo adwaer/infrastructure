@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using In.DataAccess.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
+using Newtonsoft.Json;
 
 namespace In.DataAccess.Mongo
 {
@@ -59,6 +60,13 @@ namespace In.DataAccess.Mongo
                 .InsertMany(entity);
         }
 
+        public void Update<T>(T entity) where T : class
+        {
+            _database.GetCollection<T>(nameof(T))
+                .FindOneAndUpdate(arg => GetId(entity) == GetId(arg),
+                    new JsonUpdateDefinition<T>(JsonConvert.SerializeObject(entity)));
+        }
+
         public void RemoveEntity<T>(T entity) where T : class
         {
             _database.GetCollection<T>(nameof(T))
@@ -78,7 +86,7 @@ namespace In.DataAccess.Mongo
             _session.CommitTransaction();
             return 0;
         }
-        
+
         private static object GetId(object src)
         {
             return src.GetType()

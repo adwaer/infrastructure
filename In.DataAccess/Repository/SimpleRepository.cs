@@ -6,11 +6,11 @@ using In.Specifications;
 
 namespace In.DataAccess.Repository
 {
-    public class DatasetCrudUow<TEntity> : IRepository<TEntity> where TEntity : class, IHasKey
+    public class SimpleRepository<TEntity> : IRepository<TEntity> where TEntity : class, IHasKey
     {
         private readonly IDataSetUow _dataSetUow;
 
-        public DatasetCrudUow(IDataSetUow dataSetUow)
+        public SimpleRepository(IDataSetUow dataSetUow)
         {
             _dataSetUow = dataSetUow;
         }
@@ -33,6 +33,11 @@ namespace In.DataAccess.Repository
         public void Add(TEntity data)
         {
             _dataSetUow.AddEntity(data);
+        }
+
+        public void Update(TEntity entity)
+        {
+            _dataSetUow.Update(entity);
         }
 
         public void Remove(TEntity data)

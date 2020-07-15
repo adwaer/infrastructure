@@ -53,6 +53,12 @@ namespace In.DataAccess.EfCore.Implementations
                 .AddRange(entity);
         }
 
+        public void Update<T>(T entity) where T : class
+        {
+            _dbContext.Set<T>()
+                .Update(entity);
+        }
+
         public void RemoveEntity<T>(T entity) where T : class
         {
             _dbContext.Set<T>()

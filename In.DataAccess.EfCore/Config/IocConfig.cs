@@ -25,7 +25,7 @@ namespace In.DataAccess.EfCore.Config
                 .AddScoped<DbContext, TCtx>()
                 .AddScoped<IDataSetUow, EfDatasetUow>()
                 .AddScoped<ILinqProvider, EfLinqProvider>()
-                .AddScoped(typeof(IRepository<>), typeof(DatasetCrudUow<>))
+                .AddScoped(typeof(IRepository<>), typeof(SimpleRepository<>))
                 .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
                 .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan
