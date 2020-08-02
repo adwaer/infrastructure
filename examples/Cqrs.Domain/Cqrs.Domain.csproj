@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="In.Infrastructure.Cqrs.Command" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.DataAccess" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.DDD" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.FunctionalCSharp" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.Specifications" Version="1.0.15" />
+    </ItemGroup>
+
+</Project>
