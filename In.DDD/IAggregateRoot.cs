@@ -1,9 +1,13 @@
-using System;
-
-namespace In.DDD
+﻿﻿namespace In.DDD
 {
     public interface IAggregateRoot
     {
-        Guid Id { get; }
+        
+    }
+    public interface IAggregateRoot<TModel>: IAggregateRoot
+    {
+        TModel Model { get; }
+        bool IsNew { get; }
+        void SetModel(TModel entity, bool isNew);
     }
 }

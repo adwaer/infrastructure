@@ -53,7 +53,10 @@ namespace In.Web.Nats
         /// <summary>
         /// Add ddd services
         /// </summary>
-        /// <param name="assemblies">assemblies with ddd repositories and event handlers</param>
+        /// <param name="assemblies">
+        /// for: IDomainUow / IDomainRepository / IDomainMessageDispatcher / IDomainMessageHandler
+        /// note: only IDomainMessageHandler don't have simple implementation, other 3 have
+        /// </param>
         /// <returns></returns>
         public IServiceCollection AddDDD(Assembly[] assemblies)
         {

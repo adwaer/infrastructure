@@ -54,7 +54,7 @@ Query builder/ Message bus wrapper sends it to MQ and subscribes for response ->
 Free command/query handler host gets the message, parse it and send to  message bus and/or query builder ->
 business logic in query/command handlers
 
-![Simple way diagramm](docs/cqrs_nats_diagramm.png)
+![Distributed way diagramm](docs/cqrs_nats_diagramm.png)
 
 ### Settings example
 
@@ -151,8 +151,9 @@ Configurations:
   **Result** - Main functional class
   
 6. In.DDD (**Not ready yet!**)
-  There are domain events and handlers
-  Ioc method: **AddWebServices**
+  There are domain UOW / Repo / Dispatcher / Event Handlers
+  Ioc method: DddModuleBuilder.AddServices
+  We recommend you to use it only on "Commands Way" because of performance
 
 7. In.DataMapping
   There are IMapperService abstraction only

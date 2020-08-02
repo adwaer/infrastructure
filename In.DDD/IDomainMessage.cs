@@ -1,15 +1,8 @@
-using System;
-using System.Collections.Generic;
-using In.Common;
-
-namespace In.DDD
+﻿namespace In.DDD
 {
-    public interface IDomainMessage
+    public interface IDomainMessage<out TAggregate>
+        where TAggregate : IAggregateRoot
     {
-        string Type { get; }
-        DateTime Created { get; }
-        Dictionary<string, Object> Args { get; }
-        string CorrelationId { get; set; }
-        void Flatten();
+        TAggregate Data { get; }
     }
 }

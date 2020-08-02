@@ -11,9 +11,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\In.AppBuilder\In.AppBuilder.csproj" />
       <ProjectReference Include="..\In.Common\In.Common.csproj" />
       <ProjectReference Include="..\In.DataAccess\In.DataAccess.csproj" />
-      <ProjectReference Include="..\In.Logging\In.Logging.csproj" />
     </ItemGroup>
 
 </Project>
