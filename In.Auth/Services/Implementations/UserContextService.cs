@@ -21,14 +21,14 @@ namespace In.Auth.Services.Implementations
         }
 
         /// <inheritdoc />
-        public Guid GetUserId(string userIdClaim = ClaimsHelper.ClaimUserId)
+        public string GetUserId(string userIdClaim = ClaimsHelper.ClaimUserId)
         {
             var claimWithUserId = _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == userIdClaim);
 
             if (claimWithUserId == null)
                 throw new UnauthorizedAccessException("Current user unauthorized.");
 
-            return new Guid(claimWithUserId.Value);
+            return claimWithUserId.Value;
         }
 
         /// <inheritdoc />

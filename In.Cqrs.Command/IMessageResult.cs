@@ -6,7 +6,7 @@ namespace In.Cqrs.Command
     {
         string Body { get; set; }
         string Info { get; set; }
-        bool Socceed { get; set; }
+        bool Succeed { get; set; }
         string Type { get; set; }
     }
 }

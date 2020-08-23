@@ -44,8 +44,7 @@ namespace In.Cqrs.Command.Nats.Implementations
 
         public async Task<Result> SendAsync<TInput>(TInput command) where TInput : IMessage
         {
-            var messageResult = GetLogModel(command);
-            try
+            return await Execute(command, async () =>
             {
                 var commandQueue = _queueFactory.Get();
 
@@ -54,17 +53,7 @@ namespace In.Cqrs.Command.Nats.Implementations
                 _connection.Flush();
 
                 return await GetResponse(data.Reply);
-            }
-            catch (Exception e)
-            {
-                messageResult.Socceed = false;
-                messageResult.Info = e.ToString();
-                throw;
-            }
-            finally
-            {
-                await SaveCommand(messageResult);
-            }
+            });
         }
 
         public Task<Result<TOutput>> SendAsync<TInput, TOutput>(TInput command) where TInput : IMessage
@@ -115,18 +104,75 @@ namespace In.Cqrs.Command.Nats.Implementations
             return promise.Task;
         }
 
+        private async Task<Result<TOutput>> Execute<TOutput>(IMessage command, Func<Task<Result<TOutput>>> func)
+        {
+            IMessageResult messageResult = null;
+
+            try
+            {
+                var result = await func();
+
+                messageResult = GetLogFromResult(command, result);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                messageResult = GetLogFromError(command, ex);
+                return Result.Failure<TOutput>(ex.Message);
+            }
+            finally
+            {
+                await SaveCommand(messageResult);
+            }
+        }
+
+        private async Task<Result> Execute(IMessage command, Func<Task<Result>> func)
+        {
+            IMessageResult messageResult = null;
+
+            try
+            {
+                var result = await func();
+
+                messageResult = GetLogFromResult(command, result);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                messageResult = GetLogFromError(command, ex);
+                return Result.Failure(ex.Message);
+            }
+            finally
+            {
+                await SaveCommand(messageResult);
+            }
+        }
+
         private Task SaveCommand(IMessageResult msgResult)
         {
             _storage.Add(msgResult);
             return _storage.Save();
         }
 
-        private IMessageResult GetLogModel(IMessage command)
+        private IMessageResult GetLogFromError(IMessage command, Exception ex)
         {
             var msgResult = _diScope.Resolve<IMessageResult>();
             msgResult.Body = JObject.FromObject(command).ToString();
             msgResult.Type = command.GetType().ToString();
-            msgResult.Socceed = true;
+            msgResult.Succeed = false;
+            msgResult.Info = ex.Message;
+
+            return msgResult;
+        }
+
+        private IMessageResult GetLogFromResult(IMessage command, Result result)
+        {
+            var msgResult = _diScope.Resolve<IMessageResult>();
+            msgResult.Body = JObject.FromObject(command).ToString();
+            msgResult.Type = command.GetType().ToString();
+            msgResult.Succeed = result.IsSuccess;
+
+            if (result.IsFailure) msgResult.Info = result.Error;
 
             return msgResult;
         }
