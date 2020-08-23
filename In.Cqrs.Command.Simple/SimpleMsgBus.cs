@@ -53,7 +53,12 @@ namespace In.Cqrs.Command.Simple
 
                     if (contains == true)
                     {
-                        return await (Task<Result>) method.Invoke(handler, new object?[] {command});
+                        var handlerCall = method.Invoke(handler, new object?[] {command});
+                        if (handlerCall == null)
+                        {
+                            throw new InvalidOperationException("Can't find handler method");
+                        }
+                        return await (Task<Result>) handlerCall;
                     }
                 }
 
@@ -83,45 +88,37 @@ namespace In.Cqrs.Command.Simple
 
         private async Task<Result<TOutput>> Execute<TOutput>(IMessage command, Func<Task<Result<TOutput>>> func)
         {
-            IMessageResult messageResult = null;
-
             try
             {
                 var result = await func();
 
-                messageResult = GetLogFromResult(command, result);
+                var messageResult = GetLogFromResult(command, result);
+                await SaveCommand(messageResult);
                 return result;
             }
             catch (Exception ex)
             {
-                messageResult = GetLogFromError(command, ex);
-                return Result.Failure<TOutput>(ex.Message);
-            }
-            finally
-            {
+                var messageResult = GetLogFromError(command, ex);
                 await SaveCommand(messageResult);
+                return Result.Failure<TOutput>(ex.Message);
             }
         }
 
         private async Task<Result> Execute(IMessage command, Func<Task<Result>> func)
         {
-            IMessageResult messageResult = null;
-
             try
             {
                 var result = await func();
 
-                messageResult = GetLogFromResult(command, result);
+                var messageResult = GetLogFromResult(command, result);
+                await SaveCommand(messageResult);
                 return result;
             }
             catch (Exception ex)
             {
-                messageResult = GetLogFromError(command, ex);
-                return Result.Failure(ex.Message);
-            }
-            finally
-            {
+                var messageResult = GetLogFromError(command, ex);
                 await SaveCommand(messageResult);
+                return Result.Failure(ex.Message);
             }
         }
 
