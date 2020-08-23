@@ -1,4 +1,6 @@
-﻿﻿ namespace In.Auth.Services
+﻿﻿ using In.Auth.Config;
+
+  namespace In.Auth.Services
 {
     /// <summary>
     /// Service for received user info from context.
@@ -9,7 +11,7 @@
         /// Get user unique identificator from context.
         /// </summary>
         /// <returns>Unique identificator.</returns>
-        string GetUserId(string userIdClaim);
+        string GetUserId(string userIdClaim = ClaimsHelper.ClaimUserId);
 
         /// <summary>
         /// Get user email from context.
