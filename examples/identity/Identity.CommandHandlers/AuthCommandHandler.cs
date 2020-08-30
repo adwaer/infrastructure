@@ -10,7 +10,7 @@ using Microsoft.Extensions.Options;
 
 namespace Identity.CommandHandlers
 {
-    public class AuthCommandHandler : ICommandHandler<PwdAuthCmd>
+    public class AuthCommandHandler : ICommandHandler<PwdAuthCmd, string>
     {
         private readonly UserManager<User> _userManager;
         private readonly ITokenService _tokenService;
@@ -24,11 +24,11 @@ namespace Identity.CommandHandlers
             _authenticationSettings = authenticationSettings.Value;
         }
 
-        public async Task<Result> Handle(PwdAuthCmd message)
+        public async Task<Result<string>> Handle(PwdAuthCmd message)
         {
             var user = await _userManager.FindByEmailAsync(message.Email);
             if (user == null)
-                return Result.Failure("Auth failed");
+                return Result.Failure<string>("Auth failed");
 
             var token = _tokenService.GenerateToken(_authenticationSettings, (user.Id, user.UserName));
             return Result.Success(token);

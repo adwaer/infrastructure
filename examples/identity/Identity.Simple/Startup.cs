@@ -12,7 +12,7 @@ using Serilog;
 using Web.Infrastructure;
 using IocExtensions = Identity.Simple.Config.IocExtensions;
 
-namespace Identity.Simple 
+namespace Identity.Simple
 {
     /// <summary>
     /// Startup
@@ -45,6 +45,7 @@ namespace Identity.Simple
                 .AddCommon()
                 .AddLogs()
                 .AddIdentitySrv()
+                .AddAuthClient(Configuration)
                 .AddCqrsSimpleCommands()
                 .AddCqrsSimpleQueries()
                 .AddDMAutomapper()
@@ -72,9 +73,11 @@ namespace Identity.Simple
                 .UseUnhandledExceptionLogger(loggerFactory)
                 .UseErrorsMiddleware()
                 .UseCors(IocExtensions.CorsPolicy)
-                .UseSwagger()
+                .UseSwagger(c => { c.SerializeAsV2 = true; })
                 .UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity API v1"))
                 .UseRouting()
+                .UseAuthentication()
+                .UseAuthorization()
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllers();

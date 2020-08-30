@@ -7,22 +7,23 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="In.Infrastructure.Auth.Identity.Server" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.Common" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.Cqrs.Command" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.Cqrs.Command.Simple" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.Cqrs.Query.Simple" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.DataAccess.EfCore" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.DataMapping.Automapper" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.FunctionalCSharp" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.Logging" Version="1.0.15" />
-        <PackageReference Include="In.Infrastructure.Web" Version="1.0.15" />
+        <PackageReference Include="In.Infrastructure.Auth" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Auth.Identity.Server" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Common" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Cqrs.Command" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Cqrs.Command.Simple" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Cqrs.Query.Simple" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.DataAccess.EfCore" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.DataMapping.Automapper" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.FunctionalCSharp" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Logging" Version="1.0.16" />
+        <PackageReference Include="In.Infrastructure.Web" Version="1.0.16" />
         <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
         <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
         <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
         <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
-        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.6" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.4" />
     </ItemGroup>
 
     <ItemGroup>

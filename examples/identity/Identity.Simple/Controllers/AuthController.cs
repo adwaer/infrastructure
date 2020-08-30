@@ -43,14 +43,14 @@ namespace Identity.Simple.Controllers
         {
             var result = await PwdAuthCmd
                 .Create(request.Password, request.Email)
-                .Bind(async cmd => await _messageSender.SendAsync(cmd));
+                .Bind(async cmd => await _messageSender.SendAsync<PwdAuthCmd, string>(cmd));
 
             if (result.IsFailure)
             {
                 throw new InvalidOperationException(result.Error);
             }
 
-            return Ok(result);
+            return Ok(result.Value);
         }
     }
 }

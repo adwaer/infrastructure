@@ -45,7 +45,7 @@ namespace Identity.Simple.Controllers
         {
             var user = await _queryBuilder
                 .ForGeneric<User>()
-                .Where(UserSpecifications.WithId(_contextService.GetUserId(null).ToString()))
+                .Where(UserSpecifications.WithId(_contextService.GetUserId()))
                 .FirstOrDefaultAsync();
 
             return Ok(user.Email);

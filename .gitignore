@@ -241,3 +241,4 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 .idea
+examples/identity/Identity.Simple/Logs/log.txt

@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System.Text;
 using Identity.CommandHandlers;
 using Identity.Dal;
 using Identity.Domain.Models;
 using Identity.QueryHandlers;
+using In.Auth.Config;
 using In.Auth.Identity.Server.Config;
-using In.Common;
 using In.Common.Config;
-using In.Cqrs.Command;
 using In.Cqrs.Command.Simple.Config;
 using In.Cqrs.Query.Simple.Config;
 using In.DataAccess.EfCore.Config;
 using In.DataMapping.Automapper.Config;
 using In.Logging.Config;
-using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using Web.Infrastructure;
 
 namespace Identity.Simple.Config
 {
@@ -96,25 +97,48 @@ namespace Identity.Simple.Config
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Title = "Simple API",
-                    Version = "v1"
+                    Version = "v1",
+                    Description = "A simple example ASP.NET Core Web API",
+                    TermsOfService = new Uri("https://example.com/terms"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Azat Buriev",
+                        Email = string.Empty,
+                        Url = new Uri("https://www.linkedin.com/in/azat-buriev-b83b3a5a/"),
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
                 });
 
-                var scheme = new OpenApiSecurityScheme
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
                     Description = "Please enter JWT with Bearer into field",
                     Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey,
-                };
-                var security = new OpenApiSecurityRequirement
+                    Scheme = "Bearer"
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
-                    {scheme, new List<string>()}
-                };
-                
-                c.AddSecurityDefinition("Bearer", scheme);
-                c.AddSecurityRequirement(security);
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "Bearer"
+                            }
+                        },
+                        Array.Empty<string>()
+                    }
+                });
 
-                c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Identity.Simple.xml"));
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
         }
 
@@ -163,7 +187,23 @@ namespace Identity.Simple.Config
             IConfiguration configuration)
         {
             return services
-                .Configure<AuthenticationOptions>(configuration.GetSection("AuthenticationOptions"));
+                .Configure<AuthenticationSettings>(configuration.GetSection("AuthenticationOptions"));
+        }
+
+        /// <summary>
+        /// settings options
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        /// <returns></returns>
+        public static IServiceCollection AddAuthClient(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            var section = configuration.GetSection("AuthenticationOptions");
+            var options = section.Get<AuthenticationSettings>();
+
+            return services
+                .AddAuth(options);
         }
     }
 }

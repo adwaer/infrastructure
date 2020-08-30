@@ -52,7 +52,7 @@ namespace Identity.Simple.Controllers
 
             if (result.IsFailure)
             {
-                throw new ArgumentException(result.Error);
+                throw new InvalidOperationException(result.Error);
             }
 
             return NoContent();

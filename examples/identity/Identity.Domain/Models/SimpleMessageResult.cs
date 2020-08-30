@@ -7,7 +7,7 @@ namespace Identity.Domain.Models
     {
         public string Body { get; set; }
         public string Info { get; set; }
-        public bool Socceed { get; set; }
+        public bool Succeed { get; set; }
         public string Type { get; set; }
     }
 }
