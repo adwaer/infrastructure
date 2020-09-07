@@ -16,6 +16,7 @@ using In.DataAccess.EfCore.Config;
 using In.DataMapping.Automapper.Config;
 using In.Logging.Config;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -150,7 +151,15 @@ namespace Identity.Simple.Config
         public static IServiceCollection AddIdentitySrv(this IServiceCollection services)
         {
             return new IdentityServerModuleBuilder<User, IdentityCtx>(services
-                    , optionsBuilder => optionsBuilder.UseInMemoryDatabase("indetity.simple"))
+                    , optionsBuilder => optionsBuilder.UseInMemoryDatabase("indetity.simple")
+                    , (
+                        null, null
+                        , new PasswordOptions()
+                        {
+                            RequireDigit = false, RequireLowercase = false, RequireUppercase = false,
+                            RequiredUniqueChars = 0, RequireNonAlphanumeric = false
+                        }
+                        , null, null, null, null))
                 .AddServices()
                 .AddEfCoreServices<IdentityCtx>(typeof(IdentityCtx).Assembly);
         }
