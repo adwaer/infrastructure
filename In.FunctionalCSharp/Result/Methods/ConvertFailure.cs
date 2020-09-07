@@ -1,4 +1,5 @@
 ﻿using System;
+using In.Common.Exceptions;
 
 namespace In.FunctionalCSharp
 {
@@ -7,7 +8,7 @@ namespace In.FunctionalCSharp
         public Result<K> ConvertFailure<K>()
         {
             if (IsSuccess)
-                throw new InvalidOperationException(Messages.ConvertFailureExceptionOnSuccess);
+                throw new BadRequestException(Messages.ConvertFailureExceptionOnSuccess);
 
             return Failure<K>(Error);
         }
@@ -18,7 +19,7 @@ namespace In.FunctionalCSharp
         public Result ConvertFailure()
         {
             if (IsSuccess)
-                throw new InvalidOperationException(Result.Messages.ConvertFailureExceptionOnSuccess);
+                throw new BadRequestException(Result.Messages.ConvertFailureExceptionOnSuccess);
 
             return Result.Failure(Error);
         }
@@ -26,7 +27,7 @@ namespace In.FunctionalCSharp
         public Result<K> ConvertFailure<K>()
         {
             if (IsSuccess)
-                throw new InvalidOperationException(Result.Messages.ConvertFailureExceptionOnSuccess);
+                throw new BadRequestException(Result.Messages.ConvertFailureExceptionOnSuccess);
 
             return Result.Failure<K>(Error);
         }
@@ -37,7 +38,7 @@ namespace In.FunctionalCSharp
         public Result<K, E> ConvertFailure<K>()
         {
             if (IsSuccess)
-                throw new InvalidOperationException(Result.Messages.ConvertFailureExceptionOnSuccess);
+                throw new BadRequestException(Result.Messages.ConvertFailureExceptionOnSuccess);
 
             return Result.Failure<K, E>(Error);
         }

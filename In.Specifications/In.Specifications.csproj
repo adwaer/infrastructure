@@ -10,4 +10,8 @@
         <LangVersion>8</LangVersion>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\In.Common\In.Common.csproj" />
+    </ItemGroup>
+
 </Project>

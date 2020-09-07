@@ -1,4 +1,4 @@
-namespace In.Auth.Identity.Server.Services.Exception
+namespace In.Common.Exceptions
 {
     public class AuthException : System.Exception
     {

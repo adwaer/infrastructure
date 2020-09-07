@@ -5,6 +5,7 @@ using System.Net.Mime;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
+using In.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -25,7 +26,6 @@ namespace In.Web.Middlerwares
         /// Initializes a new instance of the class. 
         /// </summary>
         /// <param name="next">A function that can process an HTTP request.</param>
-        /// <param name="logger">Logger</param>
         public ErrorHandlingMiddleware(RequestDelegate next)
         {
             _next = next;
@@ -65,21 +65,13 @@ namespace In.Web.Middlerwares
             }
             catch (Exception ex)
             {
-                await HandleExceptionAsync(context, ex, bodyAsText);
+                await HandleExceptionAsync(context, ex);
             }
         }
 
-        private Task HandleExceptionAsync(HttpContext context, Exception exception, string bodyAsText)
+        private Task HandleExceptionAsync(HttpContext context, Exception exception)
         {
             var code = GetHttpStatusCode(exception);
-
-//            if (code >= HttpStatusCode.InternalServerError)
-//            {
-//                var fullRequestPath =
-//                    $"{context.Request.Method} {context.Request.Scheme}://{context.Request.Host}/{context.Request.Path}{context.Request.QueryString}";
-//                _logger.LogError<ErrorHandlingMiddleware>("{exceptionType} {fullRequestPath} {requestBody}",
-//                    exception.GetType(), fullRequestPath, bodyAsText);
-//            }
 
             context.Response.ContentType = MediaTypeNames.Application.Json;
             context.Response.StatusCode = (int) code;
@@ -95,12 +87,14 @@ namespace In.Web.Middlerwares
             {
                 case ArgumentNullException _:
                 case InvalidOperationException _:
+                case BadRequestException _:
                 {
                     code = HttpStatusCode.BadRequest;
                     break;
                 }
                 case UnauthorizedAccessException _:
                 case AuthenticationException _:
+                case AuthException _:
                 {
                     code = HttpStatusCode.Unauthorized;
                     break;

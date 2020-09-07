@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using In.Common.Exceptions;
 
 namespace In.FunctionalCSharp.Internal
 {
@@ -16,12 +17,12 @@ namespace In.FunctionalCSharp.Internal
             if (isFailure)
             {
                 if (error == null || (error is string && error.Equals(string.Empty)))
-                    throw new ArgumentNullException(nameof(error), Result.Messages.ErrorObjectIsNotProvidedForFailure);
+                    throw new BadRequestException(nameof(error), Result.Messages.ErrorObjectIsNotProvidedForFailure);
             }
             else
             {
                 if (!EqualityComparer<E>.Default.Equals(error, default))
-                    throw new ArgumentException(Result.Messages.ErrorObjectIsProvidedForSuccess, nameof(error));
+                    throw new BadRequestException(nameof(error), Result.Messages.ErrorObjectIsProvidedForSuccess);
             }
 
             IsFailure = isFailure;

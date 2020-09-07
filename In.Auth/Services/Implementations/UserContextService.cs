@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Security.Claims;
 using In.Auth.Config;
+using In.Common.Exceptions;
 using Microsoft.AspNetCore.Http;
 
 namespace In.Auth.Services.Implementations
@@ -26,7 +27,7 @@ namespace In.Auth.Services.Implementations
             var claimWithUserId = _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == userIdClaim);
 
             if (claimWithUserId == null)
-                throw new UnauthorizedAccessException("Current user unauthorized.");
+                throw new AuthException("Current user unauthorized.");
 
             return claimWithUserId.Value;
         }
@@ -38,7 +39,7 @@ namespace In.Auth.Services.Implementations
                 _httpContext.User.Claims.FirstOrDefault(claim => claim.Type == ClaimsIdentity.DefaultNameClaimType);
 
             if (claimWithUserEmail == null)
-                throw new UnauthorizedAccessException("Current user unauthorized.");
+                throw new AuthException("Current user unauthorized.");
 
             return claimWithUserEmail.Value;
         }

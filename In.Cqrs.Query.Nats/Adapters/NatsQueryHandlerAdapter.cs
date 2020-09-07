@@ -3,6 +3,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using In.Common;
+using In.Common.Exceptions;
 using In.Cqrs.Nats.Abstract;
 using In.Cqrs.Query.Criterion.Abstract;
 using In.Cqrs.Query.Queries;
@@ -46,11 +47,11 @@ namespace In.Cqrs.Query.Nats.Adapters
             }
             catch (NATSTimeoutException)
             {
-                throw new Exception("Nats connection timeout exceed");
+                throw new InternalException("Nats connection timeout exceed");
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new InternalException(ex.Message);
             }
 
             var resultType = _typeFactory.Get(response.QueryResultType);
@@ -59,7 +60,7 @@ namespace In.Cqrs.Query.Nats.Adapters
                 return _serializer.DeserializeMsg<TResult>(response.QueryResult, resultType);
             }
 
-            throw new Exception(response.QueryResult);
+            throw new InternalException(response.QueryResult);
         }
 
         private Task<QueryNatsAdapter> GetResponse(IEncodedConnection connection, string replySubj,

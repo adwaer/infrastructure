@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using In.Common.Exceptions;
 using In.Specifications.Helpers.ExpressionCombining;
 
 namespace In.Specifications.Helpers.BooleanOperators
@@ -11,8 +12,8 @@ namespace In.Specifications.Helpers.BooleanOperators
 
         internal AndSpecification(Specification<T> spec1, Specification<T> spec2)
         {
-            _spec1 = spec1 ?? throw new ArgumentException(nameof(spec1));
-            _spec2 = spec2 ?? throw new ArgumentException(nameof(spec2));
+            _spec1 = spec1 ?? throw new BadRequestException(nameof(spec1), "Incorrect specification");
+            _spec2 = spec2 ?? throw new BadRequestException(nameof(spec2), "Incorrect specification");
         }
 
         public override Expression<Func<T, bool>> ToExpression()

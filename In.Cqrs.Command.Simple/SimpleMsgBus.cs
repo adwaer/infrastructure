@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using In.Common;
+using In.Common.Exceptions;
 using In.DataAccess.Repository.Abstract;
 using In.FunctionalCSharp;
 using Newtonsoft.Json.Linq;
@@ -56,7 +57,7 @@ namespace In.Cqrs.Command.Simple
                         var handlerCall = method.Invoke(handler, new object?[] {command});
                         if (handlerCall == null)
                         {
-                            throw new InvalidOperationException("Can't find handler method");
+                            throw new InternalException("Can't find handler method");
                         }
                         return await (Task<Result>) handlerCall;
                     }

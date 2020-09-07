@@ -1,4 +1,5 @@
 ﻿using System;
+using In.Common.Exceptions;
 using In.Cqrs.Nats.Abstract;
 
 namespace In.Cqrs.Command.Nats.Models
@@ -29,7 +30,7 @@ namespace In.Cqrs.Command.Nats.Models
             }
             catch (Exception ex)
             {
-                throw new Exception(
+                throw new InternalException(
                     $"Error when deserializing {ToString()}",
                     ex);
             }

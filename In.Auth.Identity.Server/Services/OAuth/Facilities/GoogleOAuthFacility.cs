@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 using Google.Apis.Auth;
-using In.Auth.Identity.Server.Services.Exception;
+using In.Common.Exceptions;
 
 namespace In.Auth.Identity.Server.Services.OAuth.Facilities
 {

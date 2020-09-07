@@ -22,6 +22,7 @@
     <ItemGroup>
       <ProjectReference Include="..\In.AppBuilder\In.AppBuilder.csproj" />
       <ProjectReference Include="..\In.Auth\In.Auth.csproj" />
+      <ProjectReference Include="..\In.Common\In.Common.csproj" />
       <ProjectReference Include="..\In.DataMapping\In.DataMapping.csproj" />
     </ItemGroup>
 

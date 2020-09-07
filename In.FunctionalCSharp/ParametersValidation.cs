@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using In.Common.Exceptions;
 
 namespace In.FunctionalCSharp
 {
@@ -8,13 +9,13 @@ namespace In.FunctionalCSharp
         public static void ThrowIfNullArg(object value, string name)
         {
             if (value == null)
-                throw new ArgumentNullException(name);
+                throw new BadRequestException(name);
         }
 
         public static void ThrowIfEmptyOrWhitespace(string value, string name)
         {
             if (String.IsNullOrWhiteSpace(value))
-                throw new ArgumentException($"parameter should be a not empty string", name);
+                throw new BadRequestException($"parameter should be a not empty string", name);
         }
 
         public static Result[] Validate(params Result[] validators)

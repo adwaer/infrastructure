@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using In.Common.Exceptions;
 using In.Cqrs.Nats.Abstract;
 using NATS.Client;
 
@@ -49,11 +50,11 @@ namespace In.Cqrs.Nats
             }
             catch (NATSConnectionException ex)
             {
-                throw new Exception($"Nats connection error: {ex.Message}");
+                throw new InternalException($"Nats connection error: {ex.Message}");
             }
             catch (NATSNoServersException ex)
             {
-                throw new Exception($"Nats no server error: {ex.Message}");
+                throw new InternalException($"Nats no server error: {ex.Message}");
             }
 
             while (!_connections.TryAdd(type, connection)) ;

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using In.Common;
+using In.Common.Exceptions;
 using In.Cqrs.Nats.Abstract;
 using In.Cqrs.Query.Nats.Adapters;
 using In.Cqrs.Query.Nats.Models;
@@ -41,7 +42,7 @@ namespace In.Cqrs.Query.Nats.Implementations
             var cmd = GetCmdMethod();
             if (cmd == null)
             {
-                throw new Exception("Resolver not found");
+                throw new InternalException("Resolver not found");
             }
 
             var result = await (Task<object>) cmd.Invoke(query, new object[] {param.GetCriterion()});

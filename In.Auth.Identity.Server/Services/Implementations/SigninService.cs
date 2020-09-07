@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using In.Auth.Identity.Server.Services.Exception;
+using In.Common.Exceptions;
 using In.DataMapping;
 using Microsoft.AspNetCore.Identity;
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using In.Common;
+using In.Common.Exceptions;
 using In.Cqrs.Command.Nats.Adapters;
 using In.Cqrs.Nats.Abstract;
 using In.DataAccess.Repository.Abstract;
@@ -34,12 +35,12 @@ namespace In.Cqrs.Command.Nats.Implementations
 
         public Result Send<T>(T command) where T : IMessage
         {
-            throw new NotImplementedException();
+            throw new InternalException("Unsupported command sending");
         }
 
         public Task<Result> SendAsync(IMessage command)
         {
-            throw new NotImplementedException();
+            throw new InternalException("Unsupported command sending");
         }
 
         public async Task<Result> SendAsync<TInput>(TInput command) where TInput : IMessage
@@ -58,7 +59,7 @@ namespace In.Cqrs.Command.Nats.Implementations
 
         public Task<Result<TOutput>> SendAsync<TInput, TOutput>(TInput command) where TInput : IMessage
         {
-            throw new NotSupportedException();
+            throw new InternalException("Unsupported command sending");
         }
 
         public void Dispose()

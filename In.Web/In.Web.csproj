@@ -20,6 +20,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\In.AppBuilder\In.AppBuilder.csproj" />
+      <ProjectReference Include="..\In.Common\In.Common.csproj" />
     </ItemGroup>
 
 </Project>

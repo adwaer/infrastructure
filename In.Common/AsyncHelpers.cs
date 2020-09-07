@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using In.Common.Exceptions;
 
 namespace In.Common
 {
@@ -80,7 +81,7 @@ namespace In.Common
 
             public override void Send(SendOrPostCallback d, object state)
             {
-                throw new NotSupportedException("We cannot send to our same thread");
+                throw new InternalException("We cannot send to our same thread");
             }
 
             public override void Post(SendOrPostCallback d, object state)
@@ -114,7 +115,7 @@ namespace In.Common
                         task.Item1(task.Item2);
                         if (InnerException != null) // the method threw an exeption
                         {
-                            throw new AggregateException("AsyncHelpers.Run method threw an exception.", InnerException);
+                            throw new BadRequestException("AsyncHelpers.Run method threw an exception.", InnerException);
                         }
                     }
                     else
