@@ -43,10 +43,7 @@ namespace Cqrs.Simple
         // ReSharper disable once MemberCanBePrivate.Global
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog((context, configuration) => configuration
-                    .ReadFrom.Configuration(context.Configuration)
-                    .Enrich.FromLogContext()
-                    .WriteTo.Console())
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
                 .UseDefaultServiceProvider(options => options.ValidateScopes = false);
     }

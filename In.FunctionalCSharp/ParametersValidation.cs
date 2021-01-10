@@ -14,7 +14,7 @@ namespace In.FunctionalCSharp
 
         public static void ThrowIfEmptyOrWhitespace(string value, string name)
         {
-            if (String.IsNullOrWhiteSpace(value))
+            if (string.IsNullOrWhiteSpace(value))
                 throw new BadRequestException($"parameter should be a not empty string", name);
         }
 
@@ -81,7 +81,21 @@ namespace In.FunctionalCSharp
             return Result.Success();
         }
 
-        public static Result GreaterOrEqual(Int32 value, Int32 valueToCompare, string name)
+        public static Result GreaterOrEqual(int value, int valueToCompare, string name)
+        {
+            if (value < valueToCompare)
+                return Result.Failure($"parameter {name} should be greater or equal to {valueToCompare}");
+            return Result.Success();
+        }
+
+        public static Result GreaterOrEqual(long value, int valueToCompare, string name)
+        {
+            if (value < valueToCompare)
+                return Result.Failure($"parameter {name} should be greater or equal to {valueToCompare}");
+            return Result.Success();
+        }
+
+        public static Result GreaterOrEqual(decimal value, int valueToCompare, string name)
         {
             if (value < valueToCompare)
                 return Result.Failure($"parameter {name} should be greater or equal to {valueToCompare}");
