@@ -1,4 +1,4 @@
-﻿﻿namespace In.DDD.Implementations
+﻿namespace In.DDD.Implementations
 {
     public class SimpleIAggregateRoot<TModel> : IAggregateRoot<TModel>
     {

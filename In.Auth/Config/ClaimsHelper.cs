@@ -1,4 +1,4 @@
-﻿﻿namespace In.Auth.Config
+﻿namespace In.Auth.Config
 {
     /// <summary>
     /// Helper class for claims with constants.

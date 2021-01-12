@@ -1,4 +1,4 @@
-﻿﻿namespace In.DDD
+﻿namespace In.DDD
 {
     public interface IAggregateRoot
     {
