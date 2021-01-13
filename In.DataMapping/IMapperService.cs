@@ -2,6 +2,6 @@
 {
     public interface IMapperService
     {
-        TDest GetFrom<TDest, TFrom>(TFrom model);
+        TDest GetFrom<TFrom, TDest>(TFrom model);
     }
 }

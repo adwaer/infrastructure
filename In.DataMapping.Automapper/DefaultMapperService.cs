@@ -11,9 +11,9 @@ namespace In.DataMapping.Automapper
             _mapper = mapper;
         }
 
-        public TDest GetFrom<TDest, TFrom>(TFrom model)
+        public TDest GetFrom<TFrom, TDest>(TFrom model)
         {
-            return _mapper.Map<TDest>(model);
+            return _mapper.Map<TFrom, TDest>(model);
         }
     }
 }
