@@ -32,7 +32,7 @@ namespace In.DataAccess.EfCore.Config
                     .FromAssemblies(assemblies)
                     .AddClasses(classes => classes.AssignableTo(typeof(GenericQueryBuilder<>)))
                     .AsImplementedInterfaces()
-                    .WithScopedLifetime()
+                    .WithTransientLifetime()
                 );
         }
     }
