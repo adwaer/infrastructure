@@ -34,7 +34,7 @@ namespace In.Auth.Identity.Server.Services.Implementations
             if (!result.Succeeded)
                 throw new AuthException("Incorrect password");
 
-            return _mapperService.GetFrom<TResult, TUser>(user);
+            return _mapperService.GetFrom<TUser, TResult>(user);
         }
     }
 }
