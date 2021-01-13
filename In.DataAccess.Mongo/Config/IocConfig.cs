@@ -24,7 +24,7 @@ namespace In.DataAccess.Mongo.Config
                 .AddScoped<ILinqProvider, MongoLinqProvider>()
                 .AddScoped(typeof(IRepository<>), typeof(SimpleRepository<>))
                 .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
-                .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
+                .AddScoped(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan
                     .FromAssemblies(assemblies)
                     .AddClasses(classes => classes.AssignableTo(typeof(GenericQueryBuilder<>)))
