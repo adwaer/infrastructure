@@ -20,13 +20,13 @@ namespace In.DDD.Config
             params Assembly[] assemblies)
         {
             return services
-                .AddScoped(typeof(IDomainUow<,>), typeof(SimpleDomainUow<,>))
-                .RegisterAssemblyImplementationsScoped(typeof(IDomainUow<,>), assemblies)
+                .AddTransient(typeof(IDomainUow<,>), typeof(SimpleDomainUow<,>))
+                .RegisterAssemblyImplementationsTransient(typeof(IDomainUow<,>), assemblies)
                 .AddScoped(typeof(IDomainRepository<,>), typeof(SimpleDomainRepository<,>))
                 .RegisterAssemblyImplementationsScoped(typeof(IDomainRepository<,>), assemblies)
-                .AddScoped(typeof(IDomainMessageDispatcher<>), typeof(SimpleDomainMessageDispatcher<>))
-                .RegisterAssemblyImplementationsScoped(typeof(IDomainMessageDispatcher<>), assemblies)
-                .RegisterAssemblyImplementationsScoped(typeof(IDomainMessageHandler<>), assemblies);
+                .AddTransient(typeof(IDomainMessageDispatcher<>), typeof(SimpleDomainMessageDispatcher<>))
+                .RegisterAssemblyImplementationsTransient(typeof(IDomainMessageDispatcher<>), assemblies)
+                .RegisterAssemblyImplementationsTransient(typeof(IDomainMessageHandler<>), assemblies);
         }
     }
 }

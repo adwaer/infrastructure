@@ -7,7 +7,7 @@ namespace In.Cqrs.Command.Nats.Config
     {
         public static IServiceCollection AddNatsCommandMaster<TMsgResult>(this IServiceCollection services) where TMsgResult : class, IMessageResult
         {
-            return services.AddScoped<IMessageSender, NatsMessageBus>()
+            return services.AddTransient<IMessageSender, NatsMessageBus>()
                 .AddTransient<IMessageResult, TMsgResult>();
         }
         
@@ -15,7 +15,7 @@ namespace In.Cqrs.Command.Nats.Config
         {
             return services
                 .AddSingleton<INatsReceiverCommandQueueFactory, NatsReceiverCommandQueueFactory>()
-                .AddSingleton<INatsCommandReplyFactory, NatsCommandReplyFactory>();
+                .AddTransient<INatsCommandReplyFactory, NatsCommandReplyFactory>();
         }
     }
 }

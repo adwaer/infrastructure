@@ -37,8 +37,8 @@ namespace In.Auth.Identity.Server.Config
                 .AddDefaultTokenProviders();
 
             return services
-                .AddScoped<ITokenService, TokenService>()
-                .AddScoped<ISigninService, SigninService<TUser>>();
+                .AddTransient<ITokenService, TokenService>()
+                .AddTransient<ISigninService, SigninService<TUser>>();
         }
     }
 }

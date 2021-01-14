@@ -29,7 +29,7 @@ namespace In.Auth.Config
                 });
 
             return services
-                .AddScoped<IUserContextService, UserContextService>();
+                .AddTransient<IUserContextService, UserContextService>();
         }
     }
 }

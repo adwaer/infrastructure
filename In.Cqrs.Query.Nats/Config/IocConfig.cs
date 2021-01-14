@@ -10,16 +10,16 @@ namespace In.Cqrs.Query.Nats.Config
         public static IServiceCollection AddNatsQueryMaster(this IServiceCollection services)
         {
             return services
-                .AddScoped<IQueryBuilder, QueryBuilder>()
-                .AddScoped<IQueryFactory, NatsQueryFactory>()
+                .AddTransient<IQueryBuilder, QueryBuilder>()
+                .AddTransient<IQueryFactory, NatsQueryFactory>()
                 .AddSingleton(typeof(IQueryFor<>), typeof(QueryFor<>))
-                .AddSingleton<INatsQueryReplyFactory, NatsQueryReplyFactory>();
+                .AddTransient<INatsQueryReplyFactory, NatsQueryReplyFactory>();
         }
 
         public static IServiceCollection AddNatsQuerySlave(this IServiceCollection services)
         {
             return services.AddSingleton<INatsReceiverQueryQueueFactory, NatsReceiverQueryQueueFactory>()
-                .AddSingleton<INatsQueryReplyFactory, NatsQueryReplyFactory>();
+                .AddTransient<INatsQueryReplyFactory, NatsQueryReplyFactory>();
         }
     }
 }

@@ -23,16 +23,16 @@ namespace In.DataAccess.EfCore.Config
         {
             return services
                 .AddScoped<DbContext, TCtx>()
-                .AddScoped<IDataSetUow, EfDatasetUow>()
-                .AddScoped<ILinqProvider, EfLinqProvider>()
-                .AddScoped(typeof(IRepository<>), typeof(SimpleRepository<>))
-                .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
-                .AddScoped(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
+                .AddTransient<IDataSetUow, EfDatasetUow>()
+                .AddTransient<ILinqProvider, EfLinqProvider>()
+                .AddTransient(typeof(IRepository<>), typeof(SimpleRepository<>))
+                .RegisterAssemblyImplementationsTransient(typeof(IRepository<>), assemblies)
+                .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan
                     .FromAssemblies(assemblies)
                     .AddClasses(classes => classes.AssignableTo(typeof(GenericQueryBuilder<>)))
                     .AsImplementedInterfaces()
-                    .WithScopedLifetime()
+                    .WithTransientLifetime()
                 );
         }
     }

@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Reflection;
 using AutoMapper;
-using In.Common;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace In.DataMapping.Automapper.Config
@@ -24,7 +23,7 @@ namespace In.DataMapping.Automapper.Config
                     foreach (var profile in provider.GetService<IEnumerable<Profile>>())
                         cfg.AddProfile(profile);
                 }))
-                .AddScoped(typeof(IMapperService), typeof(DefaultMapperService))
+                .AddTransient(typeof(IMapperService), typeof(DefaultMapperService))
                 .AddAutoMapper(assemblies);
         }
     }

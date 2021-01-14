@@ -20,16 +20,16 @@ namespace In.DataAccess.Mongo.Config
             params Assembly[] assemblies)
         {
             return services
-                .AddScoped<IDataSetUow, MongoDatasetUow>()
-                .AddScoped<ILinqProvider, MongoLinqProvider>()
-                .AddScoped(typeof(IRepository<>), typeof(SimpleRepository<>))
-                .RegisterAssemblyImplementationsScoped(typeof(IRepository<>), assemblies)
-                .AddScoped(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
+                .AddTransient<IDataSetUow, MongoDatasetUow>()
+                .AddTransient<ILinqProvider, MongoLinqProvider>()
+                .AddTransient(typeof(IRepository<>), typeof(SimpleRepository<>))
+                .RegisterAssemblyImplementationsTransient(typeof(IRepository<>), assemblies)
+                .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
                 .Scan(scan => scan
                     .FromAssemblies(assemblies)
                     .AddClasses(classes => classes.AssignableTo(typeof(GenericQueryBuilder<>)))
                     .AsImplementedInterfaces()
-                    .WithScopedLifetime()
+                    .WithTransientLifetime()
                 );
         }
     }
