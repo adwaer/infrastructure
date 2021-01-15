@@ -6,12 +6,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="In.Infrastructure.Cqrs.Command" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.DataAccess" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.DDD" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.FunctionalCSharp" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Specifications" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Command" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.DataAccess" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.DDD" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.FunctionalCSharp" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Specifications" Version="1.0.24" />
     </ItemGroup>
 
 </Project>

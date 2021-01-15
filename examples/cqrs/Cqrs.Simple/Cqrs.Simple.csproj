@@ -7,15 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="In.Infrastructure.Common" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Cqrs.Command.Simple" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Cqrs.Query.Simple" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.DataAccess.EfCore" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.DataMapping.Automapper" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.DDD" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Logging" Version="1.0.15" />
-      <PackageReference Include="In.Infrastructure.Web" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.Common" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Command.Simple" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Query.Simple" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.DataAccess.EfCore" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.DataMapping.Automapper" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.DDD" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Logging" Version="1.0.24" />
+      <PackageReference Include="In.Infrastructure.Web" Version="1.0.24" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.6" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4" />
       <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />

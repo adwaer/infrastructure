@@ -10,7 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.15" />
+      <PackageReference Include="In.Infrastructure.Cqrs.Query" Version="1.0.24" />
     </ItemGroup>
 
 </Project>

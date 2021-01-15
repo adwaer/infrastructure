@@ -83,14 +83,14 @@ namespace Cqrs.Simple.Configs
         /// <returns></returns>
         public static IServiceCollection AddEfDb(this IServiceCollection services, IConfiguration configuration)
         {
-            // const string connName = "DefaultConnection";
-            // var conn = configuration.GetConnectionString(connName);
+            const string connName = "DefaultConnection";
+            var conn = configuration.GetConnectionString(connName);
             
             var builder = new DataAccessEfCoreModuleBuilder<EfCtx>(services, typeof(EfCtx).Assembly);
             return builder
                 .AddServices()
-                .AddDbContext<EfCtx>(x => x.UseInMemoryDatabase("cqrs.simple"));
-                // .AddDbContext<EfCtx>(x => x.UseNpgsql(conn));
+                // .AddDbContext<EfCtx>(x => x.UseInMemoryDatabase("cqrs.simple"));
+                .AddDbContext<EfCtx>(x => x.UseNpgsql(conn));
         }
         
         /// <summary>

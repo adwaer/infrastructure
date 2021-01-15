@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Cqrs.Domain.Features.Ordering.Commands;
 using Cqrs.Domain.Features.Ordering.Criteria;
+using Cqrs.Domain.Features.Ordering.Models;
 using Cqrs.Domain.Features.Ordering.QueryResult;
 using In.Cqrs.Command;
 using In.Cqrs.Query.Queries;
@@ -37,6 +38,10 @@ namespace Cqrs.Simple.Feature
         [HttpGet]
         public async Task<IActionResult> Get(int id)
         {
+            // var v = await _queryBuilder
+            //     .ForGeneric<UserBalance>()
+            //     .FirstOrDefaultAsync();
+            //
             var balanceResponse = await _queryBuilder
                 .For<UserBalanceQueryResult>()
                 .WithAsync(new UserBalanceCriterion(id));
