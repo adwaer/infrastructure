@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <LangVersion>8</LangVersion>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.6"/>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="3.1.4"/>
+        <PackageReference Include="Serilog.AspNetCore" Version="3.2.0"/>
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\In.Common\In.Common.csproj"/>
+        <ProjectReference Include="..\..\..\In.Cqrs.Command.Simple\In.Cqrs.Command.Simple.csproj"/>
+        <ProjectReference Include="..\..\..\In.Cqrs.Query\In.Cqrs.Query.csproj"/>
+        <ProjectReference Include="..\..\..\In.Cqrs.Query.Simple\In.Cqrs.Query.Simple.csproj"/>
+        <ProjectReference Include="..\..\..\In.DataAccess.EfCore\In.DataAccess.EfCore.csproj"/>
+        <ProjectReference Include="..\..\..\In.DataMapping.Automapper\In.DataMapping.Automapper.csproj"/>
+        <ProjectReference Include="..\..\..\In.DDD\In.DDD.csproj"/>
+        <ProjectReference Include="..\..\..\In.Logging\In.Logging.csproj"/>
+        <ProjectReference Include="..\..\..\In.Web\In.Web.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Cqrs.CommandHandlers\Cqrs.CommandHandlers.csproj"/>
+        <ProjectReference Include="..\Cqrs.Domain\Cqrs.Domain.csproj"/>
+        <ProjectReference Include="..\Cqrs.EventHandlers\Cqrs.EventHandlers.csproj"/>
+        <ProjectReference Include="..\Cqrs.QueryHandlers\Cqrs.QueryHandlers.csproj"/>
+        <ProjectReference Include="..\Ef.Dal\Ef.Dal.csproj"/>
+        <ProjectReference Include="..\Web.Infrastructure\Web.Infrastructure.csproj"/>
+    </ItemGroup>
+
+</Project>

@@ -7,7 +7,9 @@ namespace In.Common.Config
     {
         public static IServiceCollection AddCommonServices(this IServiceCollection services)
         {
-            return services.AddSingleton<IDiScope, ServiceLocator>()
+            return services
+                .AddHttpContextAccessor()
+                .AddSingleton<IDiScope, ServiceLocator>()
                 .AddSingleton<ITypeFactory, TypeFactory>();
         }
     }
