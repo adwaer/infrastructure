@@ -33,6 +33,15 @@ namespace In.DataAccess.EfCore.Config
             var properties = type.GetProperties();
             foreach (var property in properties)
             {
+                // skip not ref types and primitives
+                if (property.PropertyType.IsValueType ||
+                    property.PropertyType.IsPrimitive ||
+                    property.PropertyType == typeof(decimal) ||
+                    property.PropertyType == typeof(string))
+                {
+                    continue;
+                }
+
                 var getter = property.GetGetMethod();
                 if (getter != null)
                 {
