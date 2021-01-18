@@ -22,7 +22,8 @@ namespace In.DataAccess.Repository
 
         public async Task<TEntity> FindOne(Specification<TEntity> specification)
         {
-            return await _dataSetUow.FindOne(specification.ToExpression());
+            return await _dataSetUow
+                .FindOne(specification.ToExpression());
         }
 
         public Task<TEntity[]> GetAll()

@@ -24,7 +24,8 @@ namespace In.DataAccess.EfCore.Config
             return services
                 .AddScoped<DbContext, TCtx>()
                 .AddTransient<IDataSetUow, EfDatasetUow>()
-                .AddTransient<ILinqProvider, EfLinqProvider>()
+                .AddTransient<ISimpleQueryProvider, EfSimpleQueryProvider>()
+                .AddTransient<IGreedyQueryProvider, EfGreedyQueryProvider>()
                 .AddTransient(typeof(IRepository<>), typeof(SimpleRepository<>))
                 .RegisterAssemblyImplementationsTransient(typeof(IRepository<>), assemblies)
                 .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))

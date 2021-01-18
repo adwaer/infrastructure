@@ -4,9 +4,9 @@ using In.DataAccess.Entity.Abstract;
 namespace In.DataAccess.Repository.Abstract
 {
     /// <summary>
-    /// Linq provider
+    /// Query provider
     /// </summary>
-    public interface ILinqProvider
+    public interface ISimpleQueryProvider
     {
         /// <summary>
         /// Query object for concrete <see cref="IHasKey" />
@@ -18,6 +18,6 @@ namespace In.DataAccess.Repository.Abstract
         ///     <see cref="IQueryable{TEntity}" /> object for type of TEntity
         /// </returns>
         IQueryable<TEntity> GetQuery<TEntity>()
-            where TEntity : class, IHasKey;
+            where TEntity : class;
     }
 }

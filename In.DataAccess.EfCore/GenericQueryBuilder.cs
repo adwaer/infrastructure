@@ -25,7 +25,7 @@ namespace In.DataAccess.EfCore
 		}
 
 		[SuppressMessage("ReSharper", "UnusedMember.Global")]
-		public GenericQueryBuilder(ILinqProvider linqProvider, IConfigurationProvider mapperConfigurationProvider)
+		public GenericQueryBuilder(ISimpleQueryProvider linqProvider, IConfigurationProvider mapperConfigurationProvider)
 			: base(linqProvider.GetQuery<TSource>())
 		{
 			_mapperConfiguration = mapperConfigurationProvider;

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using In.DataAccess.Entity.Abstract;
 using In.DataAccess.Repository.Abstract;
 using Microsoft.EntityFrameworkCore;
 using MongoDB.Driver;
@@ -18,6 +20,13 @@ namespace In.DataAccess.Mongo
         {
             _database = ctx.Db;
             _session = _database.Client.StartSession();
+        }
+
+        public IQueryable<T> GetQuery<T>() where T : class, IHasKey
+        {
+            return _database
+                .GetCollection<T>(nameof(T))
+                .AsQueryable();
         }
 
         public async Task<ICollection<T>> Find<T>(Expression<Func<T, bool>> expression) where T : class

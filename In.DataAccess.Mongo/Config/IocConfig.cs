@@ -21,7 +21,8 @@ namespace In.DataAccess.Mongo.Config
         {
             return services
                 .AddTransient<IDataSetUow, MongoDatasetUow>()
-                .AddTransient<ILinqProvider, MongoLinqProvider>()
+                .AddTransient<ISimpleQueryProvider, MongoQueryProvider>()
+                .AddTransient<IGreedyQueryProvider, MongoQueryProvider>()
                 .AddTransient(typeof(IRepository<>), typeof(SimpleRepository<>))
                 .RegisterAssemblyImplementationsTransient(typeof(IRepository<>), assemblies)
                 .AddTransient(typeof(IGenericQueryBuilder<>), typeof(GenericQueryBuilder<>))
