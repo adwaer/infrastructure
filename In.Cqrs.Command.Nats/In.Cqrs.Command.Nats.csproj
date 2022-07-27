@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Authors>Adwaer Team</Authors>
         <Company>Adwaer</Company>
         <PackageId>In.Infrastructure.Cqrs.Command.Nats</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Cqrs.Command.Nats</RootNamespace>
-        <LangVersion>8</LangVersion>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -17,7 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="NATS.Client" Version="0.10.1" />
+        <PackageReference Include="NATS.Client" Version="0.14.8" />
     </ItemGroup>
 
 </Project>

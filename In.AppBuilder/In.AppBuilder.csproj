@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Authors>Adwaer Team</Authors>
         <Company>Adwaer</Company>
         <PackageId>In.Infrastructure.AppBuilder</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.AppBuilder</RootNamespace>
-        <LangVersion>8</LangVersion>
+        <LangVersion>11</LangVersion>
         <OutputType>Library</OutputType>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
