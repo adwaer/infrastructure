@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.Auth.Identity.Server</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Auth.Identity.Server</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
         <OutputType>Library</OutputType>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

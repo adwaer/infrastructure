@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.Web</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Web</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
         <OutputType>Library</OutputType>
         <IsPackable>true</IsPackable>
     </PropertyGroup>

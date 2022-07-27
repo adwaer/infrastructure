@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.Common</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Common</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

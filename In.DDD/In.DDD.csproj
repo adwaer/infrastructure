@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.DDD</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.DDD</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

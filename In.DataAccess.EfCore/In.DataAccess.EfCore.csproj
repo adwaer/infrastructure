@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.DataAccess.EfCore</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.DataAccess.EfCore</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

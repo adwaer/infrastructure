@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.Cqrs.Query.Nats</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Cqrs.Query.Nats</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>

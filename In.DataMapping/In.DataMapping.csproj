@@ -7,7 +7,7 @@
         <PackageId>In.Infrastructure.DataMapping</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.DataMapping</RootNamespace>
-        <LangVersion>11</LangVersion>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
 </Project>
