@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net6.0</TargetFramework>
         <Authors>Adwaer Team</Authors>
         <Company>Adwaer</Company>
         <PackageId>In.Infrastructure.Cqrs.Query</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.Cqrs.Query</RootNamespace>
-        <LangVersion>8</LangVersion>
+        <LangVersion>11</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="X.PagedList" Version="8.0.7" />
+      <PackageReference Include="X.PagedList" Version="8.4.3" />
     </ItemGroup>
 
     <ItemGroup>
