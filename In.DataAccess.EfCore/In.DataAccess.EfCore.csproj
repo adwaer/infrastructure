@@ -1,13 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net6.0</TargetFramework>
+        <TargetFramework>net8.0</TargetFramework>
         <Authors>Adwaer Team</Authors>
         <Company>Adwaer</Company>
         <PackageId>In.Infrastructure.DataAccess.EfCore</PackageId>
         <Version>0.0.1</Version>
         <RootNamespace>In.DataAccess.EfCore</RootNamespace>
-        <LangVersion>10</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
