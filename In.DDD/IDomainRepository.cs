@@ -6,8 +6,8 @@ using In.Specifications;
 namespace In.DDD
 {
     public interface IDomainRepository<TAggregate, TModel>
-        where TModel : class, IHasKey
-        where TAggregate : IAggregateRoot<TModel>
+        where TModel : class, IHasKey, new()
+        where TAggregate : class, IAggregateRoot<TModel>, new()
     {
         Task<IEnumerable<TAggregate>> Find(Specification<TModel> specification);
 
