@@ -5,8 +5,8 @@ using In.DataAccess.Repository.Abstract;
 namespace In.DDD.Implementations
 {
     public class SimpleDomainUow<TAggregate, TModel> : IDomainUow<TAggregate, TModel>
-        where TModel : class, IHasKey
-        where TAggregate : IAggregateRoot<TModel>
+        where TModel : class, IHasKey, new()
+        where TAggregate : class, IAggregateRoot<TModel>, new()
     {
         private readonly IRepository<TModel> _dbRepo;
         private readonly IDomainMessageDispatcher<TAggregate> _dispatcher;
