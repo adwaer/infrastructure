@@ -43,32 +43,27 @@ namespace In.DataAccess.EfCore.Implementations
 
         public void AddEntity<T>(T entity) where T : class
         {
-            _dbContext.Set<T>()
-                .Add(entity);
+            _dbContext.Add(entity);
         }
 
         public void AddRange<T>(IEnumerable<T> entity) where T : class
         {
-            _dbContext.Set<T>()
-                .AddRange(entity);
+            _dbContext.AddRange(entity);
         }
 
         public void Update<T>(T entity) where T : class
         {
-            _dbContext.Set<T>()
-                .Update(entity);
+            _dbContext.Update(entity);
         }
 
         public void RemoveEntity<T>(T entity) where T : class
         {
-            _dbContext.Set<T>()
-                .Remove(entity);
+            _dbContext.Remove(entity);
         }
 
         public void RemoveRange<T>(IEnumerable<T> entity) where T : class
         {
-            _dbContext.Set<T>()
-                .RemoveRange(entity);
+            _dbContext.RemoveRange(entity);
         }
 
         public int Commit()
