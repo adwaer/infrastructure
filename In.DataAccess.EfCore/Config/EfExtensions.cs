@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using AutoMapper.Internal;
 using Microsoft.EntityFrameworkCore;
 
 namespace In.DataAccess.EfCore.Config
@@ -34,12 +35,27 @@ namespace In.DataAccess.EfCore.Config
             foreach (var property in properties)
             {
                 // skip not ref types and primitives
-                if (property.PropertyType.IsValueType ||
-                    property.PropertyType.IsPrimitive ||
-                    property.PropertyType == typeof(decimal) ||
-                    property.PropertyType == typeof(string))
+                var propertyType = property.PropertyType;
+                if (propertyType.IsValueType ||
+                    propertyType.IsPrimitive ||
+                    propertyType.IsEnum ||
+                    propertyType == typeof(decimal) ||
+                    propertyType == typeof(string))
                 {
                     continue;
+                }
+
+                if (propertyType.IsGenericType &&
+                    propertyType.IsCollection())
+                {
+                    var argType = propertyType.GetGenericArguments().FirstOrDefault();
+                    if (argType?.IsPrimitive == true ||
+                        argType?.IsEnum == true ||
+                        argType == typeof(decimal) ||
+                        argType == typeof(string))
+                    {
+                        continue;
+                    }
                 }
 
                 var getter = property.GetGetMethod();
@@ -56,8 +72,7 @@ namespace In.DataAccess.EfCore.Config
 
                         includes.Add(propPath);
 
-                        var subType = property.PropertyType;
-                        if (ignoreSubTypes.Contains(subType))
+                        if (ignoreSubTypes.Contains(propertyType))
                         {
                             continue;
                         }
@@ -67,8 +82,8 @@ namespace In.DataAccess.EfCore.Config
                             ignoreSubTypes.Add(type);
                         }
 
-                        var isEnumerableType = subType.GetInterface(nameof(IEnumerable)) != null;
-                        var genericArgs = subType.GetGenericArguments();
+                        var isEnumerableType = propertyType.GetInterface(nameof(IEnumerable)) != null;
+                        var genericArgs = propertyType.GetGenericArguments();
                         if (isEnumerableType && genericArgs.Length == 1)
                         {
                             // sub property is collection, use collection type and drill down
@@ -79,7 +94,7 @@ namespace In.DataAccess.EfCore.Config
                         else
                         {
                             // sub property is no collection, drill down directly
-                            GetIncludeTypes(ref includes, propPath, subType, ref ignoreSubTypes,
+                            GetIncludeTypes(ref includes, propPath, propertyType, ref ignoreSubTypes,
                                 addSeenTypesToIgnoreList, maxDepth);
                         }
                     }
