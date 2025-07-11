@@ -48,7 +48,7 @@ namespace In.DataAccess.EfCore.Config
                 if (propertyType.IsGenericType &&
                     propertyType.IsCollection())
                 {
-                    var argType = propertyType.GetGenericArguments().FirstOrDefault();
+                    var argType = propertyType.GetIEnumerableType().GetGenericArguments().FirstOrDefault();
                     if (argType?.IsPrimitive == true ||
                         argType?.IsEnum == true ||
                         argType == typeof(decimal) ||
