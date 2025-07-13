@@ -45,8 +45,7 @@ namespace In.DataAccess.EfCore.Config
                     continue;
                 }
 
-                if (propertyType.IsGenericType &&
-                    propertyType.IsCollection())
+                if (propertyType.IsCollection())
                 {
                     var argType = propertyType.GetIEnumerableType().GetGenericArguments().FirstOrDefault();
                     if (argType?.IsPrimitive == true ||
