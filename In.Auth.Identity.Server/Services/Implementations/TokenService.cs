@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using In.Auth.Config;
@@ -14,13 +15,19 @@ namespace In.Auth.Identity.Server.Services.Implementations
     public class TokenService : ITokenService
     {
         /// <inheritdoc />
-        public string GenerateToken(AuthenticationSettings options, (string id, string name) user)
+        public string GenerateToken(AuthenticationSettings options,
+            (string id, string name, IEnumerable<string> roles) user)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, user.name),
-                new Claim(ClaimsHelper.ClaimUserId, user.id)
+                new(ClaimsIdentity.DefaultNameClaimType, user.name),
+                new(ClaimsHelper.ClaimUserId, user.id)
             };
+
+            if (user.roles != null)
+            {
+                claims.AddRange(user.roles.Select(role => new Claim("role", role)));
+            }
 
             var securityKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(options.SecretJwtKey));
             var jwt = new JwtSecurityToken(

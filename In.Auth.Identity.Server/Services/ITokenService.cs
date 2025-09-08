@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using In.Auth.Config;
 using Microsoft.AspNetCore.Authentication;
 
@@ -14,6 +15,6 @@ namespace In.Auth.Identity.Server.Services
         /// <param name="user">user model.</param>
         /// <param name="options">Authentication options</param>
         /// <returns>Access token as string.</returns>
-        string GenerateToken(AuthenticationSettings options, (string id, string name) user);
+        string GenerateToken(AuthenticationSettings options, (string id, string name, IEnumerable<string> roles) user);
     }
 }
